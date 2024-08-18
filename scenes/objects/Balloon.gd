@@ -4,13 +4,9 @@ class_name Balloon
 var scalable_dir = {Vector2.UP:false, Vector2.RIGHT:false, Vector2.DOWN:false, Vector2.LEFT:false}
 var child_pos_hist = []
 
-func get_input():
-	super.get_input()
-	if Global.game_state != Global.STATES.DEFAULT:
-		return
-	if Input.is_action_just_pressed("ui_accept"):
-		#print(scalable_dir)
-		Global.game_state = Global.STATES.MOVING
+func _on_input(key:String):
+	super._on_input(key)
+	if key == "ui_accept":
 		var pos_to_add:Dictionary = {} #used as set
 		for dir in scalable_dir:
 			if scalable_dir[dir] == true:
@@ -45,6 +41,7 @@ func _on_move():
 
 func _on_undo():
 	super._on_undo()
+	print(child_pos_hist[-1])
 	if child_pos_hist.size() == 0:
 		return
 	
