@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6e4lssvwwqxn"]
+
+[ext_resource type="Script" path="res://scenes/objects/AirTank.gd" id="1_476du"]
+[ext_resource type="Texture2D" uid="uid://c11bt6xwhgil0" path="res://resources/sprites/placeholders/air_tamk.png" id="2_778ia"]
+
+[node name="AirTank" type="Node2D"]
+script = ExtResource("1_476du")
+dir = Vector2(1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_778ia")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(32, 0)

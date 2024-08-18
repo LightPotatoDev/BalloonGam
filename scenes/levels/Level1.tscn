@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://oequqvjpuhvy"]
+
+[ext_resource type="Script" path="res://scenes/Walls.gd" id="2_anakg"]
+[ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_p0kpt"]
+[ext_resource type="TileSet" uid="uid://bknitdukt8bmp" path="res://resources/object_tilemap.tres" id="3_1g1vt"]
+[ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="7_w2k08"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Walls" type="TileMap" parent="." groups=["wall"]]
+tile_set = ExtResource("2_p0kpt")
+format = 2
+layer_0/tile_data = PackedInt32Array(327692, 1, 0, 327691, 1, 0, 327690, 1, 0, 327689, 1, 0, 327688, 1, 0, 393224, 1, 0, 458760, 1, 0)
+script = ExtResource("2_anakg")
+
+[node name="Balloon" parent="." instance=ExtResource("7_w2k08")]
+
+[node name="Objects" type="TileMap" parent="."]
+tile_set = ExtResource("3_1g1vt")
+format = 2
+layer_0/tile_data = PackedInt32Array(524301, 0, 196608, 524304, 0, 262144, 131084, 0, 327680, 589837, 0, 196608, 655373, 0, 196608, 720909, 0, 196608, 786445, 0, 196608, 524305, 0, 262144, 524306, 0, 262144)

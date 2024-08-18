@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://oequqvjpuhvy"]
+
+[ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_p0kpt"]
+[ext_resource type="TileSet" uid="uid://bknitdukt8bmp" path="res://resources/object_tilemap.tres" id="3_1g1vt"]
+[ext_resource type="PackedScene" uid="uid://dxm2n4pn5r4ql" path="res://scenes/objects/AirTankRight.tscn" id="4_sdll4"]
+[ext_resource type="PackedScene" uid="uid://c6e4lssvwwqxn" path="res://scenes/objects/AirTankDown.tscn" id="5_i6477"]
+[ext_resource type="PackedScene" uid="uid://bt2dnq5vufmni" path="res://scenes/objects/YesTile.tscn" id="6_yl2kw"]
+[ext_resource type="PackedScene" uid="uid://bjkfrpn8ml400" path="res://scenes/objects/NoTile.tscn" id="7_q0vcx"]
+[ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="7_w2k08"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Terrain" type="TileMap" parent="." groups=["wall"]]
+tile_set = ExtResource("2_p0kpt")
+format = 2
+layer_0/tile_data = PackedInt32Array(196611, 0, 0, 262147, 0, 0, 327683, 0, 0, 393219, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 393222, 0, 0, 327684, 0, 0, 393223, 0, 0)
+
+[node name="Balloon" parent="." instance=ExtResource("7_w2k08")]
+
+[node name="Balloon2" parent="." instance=ExtResource("7_w2k08")]
+position = Vector2(352, 128)
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 65536, 0, 0, 131072, 0, 0, 131073, 0, 0, 196609, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0)
+is_player = false
+
+[node name="Objects" type="TileMap" parent="."]
+tile_set = ExtResource("3_1g1vt")
+format = 2
+layer_0/tile_data = PackedInt32Array(196614, 0, 65536, 131084, 0, 131072, 524301, 0, 196608, 524304, 0, 262144)
+
+[node name="AirTank" parent="Objects" instance=ExtResource("4_sdll4")]
+position = Vector2(208, 112)
+
+[node name="_Node2D_238843" parent="Objects" instance=ExtResource("5_i6477")]
+position = Vector2(400, 80)
+
+[node name="YesTile" parent="Objects" instance=ExtResource("6_yl2kw")]
+position = Vector2(432, 272)
+
+[node name="NoTile" parent="Objects" instance=ExtResource("7_q0vcx")]
+position = Vector2(528, 272)

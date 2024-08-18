@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://2lxmwbgsphcx"]
+
+[ext_resource type="Script" path="res://scenes/GameManager.gd" id="1_c0mq4"]
+[ext_resource type="PackedScene" uid="uid://oequqvjpuhvy" path="res://scenes/levels/Level1.tscn" id="2_v4e1o"]
+
+[sub_resource type="Gradient" id="Gradient_hmtwq"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.235294)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k062w"]
+gradient = SubResource("Gradient_hmtwq")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_c0mq4")
+
+[node name="Level1" parent="GameManager" instance=ExtResource("2_v4e1o")]
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="BG"]
+z_index = -5
+offset_left = -44.0
+offset_top = -51.0
+offset_right = 1258.0
+offset_bottom = 753.0
+texture = SubResource("GradientTexture2D_k062w")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://lu6vfb5h6vyx"]
+
+[ext_resource type="PackedScene" uid="uid://c6e4lssvwwqxn" path="res://scenes/objects/AirTank.tscn" id="1_yk5ac"]
+
+[node name="AirTankRight" type="Node2D"]
+
+[node name="AirTank" parent="." instance=ExtResource("1_yk5ac")]

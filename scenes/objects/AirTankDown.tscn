@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpf0v0iacyr7d"]
+
+[ext_resource type="PackedScene" uid="uid://c6e4lssvwwqxn" path="res://scenes/objects/AirTank.tscn" id="1_l233x"]
+
+[node name="AirTankDown" type="Node2D"]
+
+[node name="AirTank" parent="." instance=ExtResource("1_l233x")]
+rotation = 1.5708
+dir = Vector2(0, 1)
