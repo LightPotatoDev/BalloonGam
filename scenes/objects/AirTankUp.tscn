@@ -6,4 +6,4 @@
 
 [node name="AirTank" parent="." instance=ExtResource("1_cf3vi")]
 rotation = 4.71239
-dir = Vector2(0, 1)
+dir = Vector2(0, -1)

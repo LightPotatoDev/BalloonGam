@@ -22,3 +22,4 @@ color = Color(0.505882, 0.698039, 0.894118, 1)
 amount = 7
 process_material = SubResource("ParticleProcessMaterial_m2p2y")
 texture = ExtResource("1_vpmrw")
+lifetime = 2.0

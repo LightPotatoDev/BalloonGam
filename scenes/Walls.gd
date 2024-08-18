@@ -11,7 +11,6 @@ const dir = [
 func _ready():
 	for pos in get_used_cells(0):
 		var neighbor_exists = check_neighbors(pos)
-		print(pos,neighbor_exists)
 		for i in range(4):
 			if neighbor_exists[i] == false:
 				var c = cloud_particle.instantiate()
