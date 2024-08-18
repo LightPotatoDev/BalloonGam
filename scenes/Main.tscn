@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://2lxmwbgsphcx"]
+[gd_scene load_steps=6 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/GameManager.gd" id="1_c0mq4"]
 [ext_resource type="PackedScene" uid="uid://oequqvjpuhvy" path="res://scenes/levels/Level1.tscn" id="2_v4e1o"]
+[ext_resource type="Script" path="res://scenes/YesTilesLeft.gd" id="3_m3tfc"]
 
 [sub_resource type="Gradient" id="Gradient_hmtwq"]
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.235294)
@@ -27,3 +28,15 @@ offset_top = -51.0
 offset_right = 1258.0
 offset_bottom = 753.0
 texture = SubResource("GradientTexture2D_k062w")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="YesTilesLeft" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_m3tfc")

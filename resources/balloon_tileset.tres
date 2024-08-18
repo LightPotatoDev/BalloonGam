@@ -1,9 +1,11 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bfycqwhvfmjyf"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://bfycqwhvfmjyf"]
 
 [ext_resource type="PackedScene" uid="uid://bmghjdu7kggnd" path="res://scenes/objects/BalloonTile.tscn" id="1_t0ts6"]
+[ext_resource type="PackedScene" uid="uid://du16g7j7n7kmd" path="res://scenes/effects/BalloonPopParticle.tscn" id="2_osu6m"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bepkv"]
 scenes/1/scene = ExtResource("1_t0ts6")
+scenes/2/scene = ExtResource("2_osu6m")
 
 [resource]
 tile_size = Vector2i(32, 32)

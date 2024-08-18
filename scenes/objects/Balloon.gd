@@ -1,20 +1,31 @@
 extends Pushable
 class_name Balloon
 
+@onready var balloon_pop_particle = preload("res://scenes/effects/BalloonPopParticle.tscn")
+
 var scalable_dir = {Vector2.UP:false, Vector2.RIGHT:false, Vector2.DOWN:false, Vector2.LEFT:false}
 var child_pos_hist = []
+var child_snapshot = []
+
+func _ready():
+	super._ready()
+	child_snapshot = child_pos.duplicate()
 
 func get_input():
 	super.get_input()
 	if Global.game_state != Global.STATES.DEFAULT:
 		return
+	#every frame wtf, feels like shit
+	child_snapshot = child_pos.duplicate()
 	if Input.is_action_just_pressed("ui_accept"):
-		#print(scalable_dir)
 		var pos_to_add:Dictionary = {} #used as set
 		for dir in scalable_dir:
 			if scalable_dir[dir] == true:
 				for p in determine_scale_pos(dir):
 					pos_to_add[p] = null
+					
+		if !pos_to_add.is_empty():
+			EventBus.one_balloon_scaled.emit()
 				
 		for pos in pos_to_add.keys():
 			scale_balloon(pos)
@@ -37,7 +48,7 @@ func scale_balloon(pos:Vector2):
 
 func _on_move():
 	super._on_move()
-	child_pos_hist.append(child_pos.duplicate())
+	child_pos_hist.append(child_snapshot)
 
 func _on_undo():
 	super._on_undo()
@@ -61,3 +72,12 @@ func _on_undo():
 
 	child_pos = child_pos_hist[-1].duplicate()
 	child_pos_hist.remove_at(child_pos_hist.size()-1)
+
+func destroy():
+	var pp = child_pos.duplicate()
+	super.destroy()
+	for p in pp:
+		var particle = balloon_pop_particle.instantiate()
+		particle.process_material.color = modulate
+		particle.position = p * 32 + Vector2.ONE * 16
+		add_child(particle)

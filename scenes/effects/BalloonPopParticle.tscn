@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://du16g7j7n7kmd"]
+
+[ext_resource type="Texture2D" uid="uid://caplh0but8ii" path="res://resources/sprites/triangle.png" id="1_p43bd"]
+[ext_resource type="Script" path="res://scenes/effects/FreeParticle.gd" id="2_drx00"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_gcoul"]
+
+[sub_resource type="Curve" id="Curve_6onav"]
+_data = [Vector2(0, 1), 0.0, -3.21249, 0, 0, Vector2(1, 0), -0.166016, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_81e0r"]
+curve = SubResource("Curve_6onav")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m2p2y"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(2, 2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_max = 720.0
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+directional_velocity_min = 0.0
+directional_velocity_max = 0.0
+directional_velocity_curve = SubResource("CurveXYZTexture_gcoul")
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_81e0r")
+
+[node name="BalloonPopParticle" type="GPUParticles2D"]
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_m2p2y")
+texture = ExtResource("1_p43bd")
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_drx00")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -31,7 +31,13 @@ layer_0/tile_data = PackedInt32Array(327692, 1, 0, 327691, 1, 0, 327690, 1, 0, 3
 script = ExtResource("2_anakg")
 
 [node name="Balloon" parent="." instance=ExtResource("7_w2k08")]
+modulate = Color(1, 0.0862745, 0.313726, 1)
 layer_0/tile_data = PackedInt32Array(917514, 0, 65536, 917515, 0, 65536, 917516, 0, 65536)
+
+[node name="Balloon2" parent="." instance=ExtResource("7_w2k08")]
+modulate = Color(0.0901961, 0.317647, 1, 1)
+layer_0/tile_data = PackedInt32Array(983057, 0, 65536)
+is_player = false
 
 [node name="Objects" type="TileMap" parent="."]
 tile_set = ExtResource("3_1g1vt")

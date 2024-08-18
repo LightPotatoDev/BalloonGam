@@ -47,7 +47,7 @@ func check_move_collision(dir:Vector2, exclude_list = []) -> bool:
 		if group == "balloon" and col.get_parent() not in exclude_list:
 			movable = col.get_parent().check_move_collision(dir, exclude_list)
 			if movable:
-				things_to_move[col] = null
+				things_to_move[col.get_parent()] = null
 
 	return movable
 
@@ -70,8 +70,11 @@ func move(dir:Vector2):
 		thing.move(dir)
 	things_to_move = {}
 	instant_finish_tween()
+	Global.game_state = Global.STATES.MOVING
 	tween = create_tween()
 	tween.tween_property(self,"position",position+dir*32,0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	Global.game_state = Global.STATES.DEFAULT
 
 func cant_move(dir:Vector2):
 	pass
