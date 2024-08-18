@@ -33,7 +33,11 @@ script = ExtResource("2_anakg")
 [node name="Balloon" parent="." instance=ExtResource("7_w2k08")]
 layer_0/tile_data = PackedInt32Array(917514, 0, 65536, 917515, 0, 65536, 917516, 0, 65536)
 
+[node name="Balloon2" parent="." instance=ExtResource("7_w2k08")]
+layer_0/tile_data = PackedInt32Array(917521, 0, 65536)
+is_player = false
+
 [node name="Objects" type="TileMap" parent="."]
 tile_set = ExtResource("3_1g1vt")
 format = 2
-layer_0/tile_data = PackedInt32Array(524301, 0, 196608, 524304, 0, 262144, 589837, 0, 196608, 655373, 0, 196608, 720909, 0, 196608, 786445, 0, 196608, 524305, 0, 262144, 524306, 0, 262144, 327691, 0, 327680, 589844, 0, 393216, 720904, 0, 458752, 1114129, 0, 524288)
+layer_0/tile_data = PackedInt32Array(524301, 0, 196608, 524304, 0, 262144, 589837, 0, 196608, 655373, 0, 196608, 720909, 0, 196608, 786445, 0, 196608, 524305, 0, 262144, 524306, 0, 262144, 327691, 0, 327680, 589844, 0, 393216, 720904, 0, 458752, 1114129, 0, 524288, 851983, 0, 65536)

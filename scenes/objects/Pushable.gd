@@ -16,23 +16,20 @@ func _ready():
 	EventBus.move.connect(_on_move)
 		
 func get_input():
-	if Global.game_state != Global.STATES.DEFAULT:
+	if Global.game_state != Global.STATES.DEFAULT or !is_player:
 		return
 	const INPUTS = {"ui_left":Vector2.LEFT, 
 					"ui_right":Vector2.RIGHT, 
 					"ui_up":Vector2.UP, 
 					"ui_down":Vector2.DOWN}
 	for key in INPUTS.keys():
-		if is_player and Input.is_action_just_pressed(key):
-			if check_move_collision(INPUTS[key]):
+		if Input.is_action_just_pressed(key):
+			if check_move_collision(INPUTS[key]) and !child_pos.is_empty():
 				instant_finish_tween()
 				EventBus.move.emit()
 				move(INPUTS[key])
 			else:
 				cant_move(INPUTS[key])
-			
-	if Input.is_action_just_pressed("ui_copy"):
-		print(pos_history)
 		
 func _physics_process(_delta):
 	get_input()
@@ -47,7 +44,7 @@ func check_move_collision(dir:Vector2, exclude_list = []) -> bool:
 		if group == "balloon" and col.get_parent() not in exclude_list:
 			movable = col.get_parent().check_move_collision(dir, exclude_list)
 			if movable:
-				things_to_move[col] = null
+				things_to_move[col.get_parent()] = null
 
 	return movable
 
@@ -66,6 +63,7 @@ func check_spot_collision(pos:Vector2, dir:Vector2):
 	return ray.get_collider()
 	
 func move(dir:Vector2):
+	print(things_to_move)
 	for thing in things_to_move:
 		thing.move(dir)
 	things_to_move = {}
@@ -81,6 +79,7 @@ func cant_move(dir:Vector2):
 	#TODO - add 'not moving' animation
 		
 func _on_move():
+	print(self, 'moved')
 	pos_history.append(position)
 	
 func instant_finish_tween():
@@ -95,5 +94,8 @@ func _on_undo():
 		
 	position = pos_history[-1]
 	pos_history.remove_at(pos_history.size()-1)
-		
 	
+func destroy():
+	for pos in child_pos:
+		erase_cell(0,pos)
+	child_pos = []

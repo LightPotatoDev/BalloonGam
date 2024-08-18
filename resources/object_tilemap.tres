@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://bknitdukt8bmp"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://bknitdukt8bmp"]
 
 [ext_resource type="PackedScene" uid="uid://lu6vfb5h6vyx" path="res://scenes/objects/AirTankRight.tscn" id="1_1wkf2"]
+[ext_resource type="PackedScene" uid="uid://ck02f5fa0ljn6" path="res://scenes/objects/Spike.tscn" id="1_2ntd1"]
 [ext_resource type="PackedScene" uid="uid://dpf0v0iacyr7d" path="res://scenes/objects/AirTankDown.tscn" id="2_a806t"]
 [ext_resource type="PackedScene" uid="uid://bt2dnq5vufmni" path="res://scenes/objects/YesTile.tscn" id="3_sam1b"]
 [ext_resource type="PackedScene" uid="uid://cy4juoi2pqlxt" path="res://scenes/objects/AirTankLeft.tscn" id="4_53pdc"]
@@ -9,6 +10,7 @@
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gu0h5"]
 resource_name = "gimmicks"
+scenes/1/scene = ExtResource("1_2ntd1")
 scenes/3/scene = ExtResource("3_sam1b")
 scenes/4/scene = ExtResource("4_fkhq1")
 scenes/5/scene = ExtResource("2_a806t")
