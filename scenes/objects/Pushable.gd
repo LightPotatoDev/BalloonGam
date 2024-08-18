@@ -14,21 +14,28 @@ func _ready():
 	child_pos = get_used_cells(0)
 	EventBus.undo.connect(_on_undo)
 	EventBus.move.connect(_on_move)
-	EventBus.key_press.connect(_on_input)
 		
-func _on_input(key:String):
+func get_input():
+	if Global.game_state != Global.STATES.DEFAULT:
+		return
 	const INPUTS = {"ui_left":Vector2.LEFT, 
 					"ui_right":Vector2.RIGHT, 
 					"ui_up":Vector2.UP, 
 					"ui_down":Vector2.DOWN}
-	if not is_player or key not in INPUTS:
-		return 
-	if check_move_collision(INPUTS[key]) and !child_pos.is_empty():
-		instant_finish_tween()
-		EventBus.move.emit()
-		move(INPUTS[key])
-	else:
-		cant_move(INPUTS[key])
+	for key in INPUTS.keys():
+		if is_player and Input.is_action_just_pressed(key) and !child_pos.is_empty():
+			if check_move_collision(INPUTS[key]):
+				instant_finish_tween()
+				EventBus.move.emit()
+				move(INPUTS[key])
+			else:
+				cant_move(INPUTS[key])
+			
+	if Input.is_action_just_pressed("ui_copy"):
+		print(pos_history)
+		
+func _physics_process(_delta):
+	get_input()
 			
 func check_move_collision(dir:Vector2, exclude_list = []) -> bool:
 	var movable:bool = true
@@ -40,7 +47,7 @@ func check_move_collision(dir:Vector2, exclude_list = []) -> bool:
 		if group == "balloon" and col.get_parent() not in exclude_list:
 			movable = col.get_parent().check_move_collision(dir, exclude_list)
 			if movable:
-				things_to_move[col.get_parent()] = null
+				things_to_move[col] = null
 
 	return movable
 
@@ -85,7 +92,7 @@ func _on_undo():
 		
 	position = pos_history[-1]
 	pos_history.remove_at(pos_history.size()-1)
-	
+		
 func destroy():
 	for pos in child_pos:
 		erase_cell(0,pos)

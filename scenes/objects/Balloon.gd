@@ -4,17 +4,17 @@ class_name Balloon
 var scalable_dir = {Vector2.UP:false, Vector2.RIGHT:false, Vector2.DOWN:false, Vector2.LEFT:false}
 var child_pos_hist = []
 
-func _on_input(key:String):
-	super._on_input(key)
-	if key == "ui_accept":
+func get_input():
+	super.get_input()
+	if Global.game_state != Global.STATES.DEFAULT:
+		return
+	if Input.is_action_just_pressed("ui_accept"):
+		#print(scalable_dir)
 		var pos_to_add:Dictionary = {} #used as set
 		for dir in scalable_dir:
 			if scalable_dir[dir] == true:
 				for p in determine_scale_pos(dir):
 					pos_to_add[p] = null
-					
-		if not pos_to_add.is_empty():
-			EventBus.balloon_scaled.emit()
 				
 		for pos in pos_to_add.keys():
 			scale_balloon(pos)
@@ -41,28 +41,23 @@ func _on_move():
 
 func _on_undo():
 	super._on_undo()
-	print(child_pos_hist[-1])
 	if child_pos_hist.size() == 0:
 		return
 	
-	var prev_child:Dictionary = {} #set
-	var cur_child:Dictionary = {} #set
+	var prev_child:Dictionary
+	var cur_child:Dictionary
 	for p in child_pos_hist[-1]:
 		prev_child[p] = null
 	for p in child_pos:
 		cur_child[p] = null
-		
+	
 	for pos in child_pos:
 		if pos not in prev_child:
 			erase_cell(0,pos)
-			
+
 	for pos in child_pos_hist[-1]:
 		if pos not in cur_child:
 			set_cell(0,pos,0,Vector2.ZERO,1)
-	
+
 	child_pos = child_pos_hist[-1].duplicate()
 	child_pos_hist.remove_at(child_pos_hist.size()-1)
-
-func destroy():
-	super.destroy()
-	#TODO - add balloon popping particle

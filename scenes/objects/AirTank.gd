@@ -10,6 +10,7 @@ func _input(_event):
 		anim.play("air_add")
 
 func _on_area_2d_body_entered(balloon):
+	print('a')
 	colliding = true
 	balloon.get_parent().scalable_dir[dir] = true
 
