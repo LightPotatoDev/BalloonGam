@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://00clljknxxa1"]
+
+[ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/cloud_floor.png" id="1_6cki0"]
+[ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_3kxi7"]
+[ext_resource type="Script" path="res://scenes/Walls.gd" id="3_5esyj"]
+[ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="4_2r8u0"]
+[ext_resource type="TileSet" uid="uid://bknitdukt8bmp" path="res://resources/object_tilemap.tres" id="5_wr5g6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7apv3"]
+texture = ExtResource("1_6cki0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r0334"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_7apv3")
+
+[node name="Level14" type="Node2D"]
+
+[node name="Floors" type="TileMap" parent="."]
+z_index = -2
+tile_set = SubResource("TileSet_r0334")
+format = 2
+
+[node name="Walls" type="TileMap" parent="." groups=["wall"]]
+z_index = -1
+tile_set = ExtResource("2_3kxi7")
+format = 2
+layer_0/tile_data = PackedInt32Array(524300, 1, 0, 589836, 1, 0, 655372, 1, 0, 720908, 1, 0, 786444, 1, 0, 851980, 1, 0, 917516, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 524311, 1, 0, 589847, 1, 0, 655383, 1, 0, 720919, 1, 0, 786455, 1, 0, 851991, 1, 0, 917527, 1, 0, 983052, 1, 0, 983053, 1, 0, 983054, 1, 0, 983055, 1, 0, 983056, 1, 0, 983057, 1, 0, 983058, 1, 0, 983059, 1, 0, 983060, 1, 0, 983061, 1, 0, 983062, 1, 0, 983063, 1, 0, 262164, 1, 0, 262165, 1, 0, 262166, 1, 0, 262167, 1, 0, 327703, 1, 0, 393239, 1, 0, 458775, 1, 0, 327692, 1, 0, 393228, 1, 0, 458764, 1, 0, 393238, 1, 0, 393237, 1, 0, 655373, 1, 0, 655374, 1, 0)
+script = ExtResource("3_5esyj")
+
+[node name="Balloon" parent="." instance=ExtResource("4_2r8u0")]
+layer_0/tile_data = PackedInt32Array(458767, 0, 65536)
+
+[node name="Balloon2" parent="." instance=ExtResource("4_2r8u0")]
+layer_0/tile_data = PackedInt32Array(786452, 0, 131072)
+balloon_color = 2
+is_player = false
+
+[node name="Objects" type="TileMap" parent="."]
+tile_set = ExtResource("5_wr5g6")
+format = 2
+layer_0/tile_data = PackedInt32Array(589841, 0, 262144, 589842, 0, 262144, 524304, 0, 196608, 589840, 0, 196608, 655376, 0, 196608, 720912, 0, 196608, 524307, 0, 196608, 524306, 0, 196608, 524305, 0, 196608, 262157, 0, 327680, 327692, 0, 458752, 655374, 0, 327680, 393237, 0, 393216, 655377, 0, 262144, 720913, 0, 262144, 589843, 0, 262144, 655378, 0, 196608, 720914, 0, 196608, 720915, 0, 196608, 655379, 0, 196608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 328)

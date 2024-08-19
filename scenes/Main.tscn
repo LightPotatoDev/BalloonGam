@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/GameManager.gd" id="1_c0mq4"]
-[ext_resource type="Resource" uid="uid://ciharxqejugmj" path="res://resources/leveldatas/lv12.tres" id="2_ojq4m"]
+[ext_resource type="Resource" uid="uid://c6cure0yxebko" path="res://resources/leveldatas/lv15.tres" id="2_fwufu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
 font_size = 32
@@ -18,7 +18,7 @@ fill_to = Vector2(0, 0)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
-lv_data = ExtResource("2_ojq4m")
+lv_data = ExtResource("2_fwufu")
 
 [node name="Control" type="Control" parent="GameManager"]
 layout_mode = 3

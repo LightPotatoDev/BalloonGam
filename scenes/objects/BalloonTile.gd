@@ -20,4 +20,4 @@ func _on_undo():
 
 func _on_area_2d_body_entered(body):
 	if body.get_parent() != self.get_parent() and moved_before:
-		self.get_parent().destroy()
+		pass

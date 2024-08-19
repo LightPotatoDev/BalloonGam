@@ -39,6 +39,7 @@ func _physics_process(_delta):
 			
 func check_move_collision(dir:Vector2, exclude_list = []) -> bool:
 	var movable:bool = true
+	things_to_move = {}
 	for col in get_all_colliders(dir):
 		if movable == false:
 			break
@@ -70,12 +71,12 @@ func check_spot_collision(pos:Vector2, dir:Vector2):
 func move(dir:Vector2):
 	for thing in things_to_move:
 		thing.move(dir)
-	things_to_move = {}
 	instant_finish_tween()
 	Global.game_state = Global.STATES.MOVING
 	tween = create_tween()
-	tween.tween_property(self,"position",position+dir*32,0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self,"position",position+dir*32,0.06).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	await tween.finished
+	await get_tree().process_frame
 	Global.game_state = Global.STATES.DEFAULT
 
 func cant_move(dir:Vector2):
