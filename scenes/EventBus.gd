@@ -2,6 +2,7 @@ extends Node
 
 signal undo()
 signal move()
+signal restart()
 
 signal one_balloon_scaled()
 

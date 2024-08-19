@@ -8,10 +8,12 @@ func _process(delta):
 	$Area2D.monitoring = true
 
 func _on_area_2d_body_entered(body):
+	await get_tree().process_frame
 	turned_on = true
 	EventBus.no_tile.emit(true)
 
 func _on_area_2d_body_exited(body):
+	await get_tree().process_frame
 	turned_on = false
 	EventBus.no_tile.emit(false)
 
