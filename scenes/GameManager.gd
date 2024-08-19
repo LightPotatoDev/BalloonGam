@@ -14,7 +14,7 @@ func _input(_event):
 		EventBus.undo.emit()
 		$UndoSound.play()
 	if Input.is_action_just_pressed("restart"):
-		get_tree().reload_current_scene()
+		Transition.change_scene("DummyScene")
 
 func _init():
 	EventBus.yes_tile_exist.connect(_on_yes_tile_exist)
