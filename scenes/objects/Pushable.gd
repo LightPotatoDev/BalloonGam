@@ -77,12 +77,6 @@ func move(dir:Vector2):
 	for child in get_children():
 		if child is BalloonTile or child is BalloonFace:
 			child.on_pos_move(dir)
-	#Global.game_state = Global.STATES.MOVING
-	#tween = create_tween()
-	#tween.tween_property(self,"position",position+dir*32,0.06).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	#await tween.finished
-	#await get_tree().process_frame
-	#Global.game_state = Global.STATES.DEFAULT
 
 func cant_move(dir:Vector2):
 	pass

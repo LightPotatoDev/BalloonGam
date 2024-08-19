@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://jwji07p0slk6"]
+
+[ext_resource type="AudioStream" uid="uid://df8e78sdh18w8" path="res://resources/sounds/MusMus-BGM-175.mp3" id="1_u6ylv"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_u6ylv")
+autoplay = true

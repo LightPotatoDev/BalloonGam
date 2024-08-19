@@ -2,6 +2,9 @@ extends Node2D
 
 var turned_on:bool = false
 
+func _ready():
+	EventBus.no_tile_exist.emit()
+
 func _process(delta):
 	$On.visible = turned_on
 	$Off.visible = !turned_on

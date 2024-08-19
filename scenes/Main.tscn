@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://2lxmwbgsphcx"]
+[gd_scene load_steps=10 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/GameManager.gd" id="1_c0mq4"]
-[ext_resource type="Resource" uid="uid://c6cure0yxebko" path="res://resources/leveldatas/lv15.tres" id="2_fwufu"]
+[ext_resource type="Resource" uid="uid://p8jil00yihlg" path="res://resources/leveldatas/lv16.tres" id="2_7xun6"]
+[ext_resource type="Texture2D" uid="uid://jftv3u88ajig" path="res://resources/sprites/placeholders/yes_tile_on.png" id="3_dvrkx"]
+[ext_resource type="Texture2D" uid="uid://b0xhtx3xp1l6p" path="res://resources/sprites/placeholders/no_tile_on.png" id="4_b1vhr"]
+[ext_resource type="AudioStream" uid="uid://c68x2lam2lewr" path="res://resources/sounds/undo.wav" id="5_lqts4"]
+[ext_resource type="AudioStream" uid="uid://bwhj32uf8maxc" path="res://resources/sounds/lvup_kokuti.wav" id="6_qklfv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
 font_size = 32
@@ -18,7 +22,7 @@ fill_to = Vector2(0, 0)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
-lv_data = ExtResource("2_fwufu")
+lv_data = ExtResource("2_7xun6")
 
 [node name="Control" type="Control" parent="GameManager"]
 layout_mode = 3
@@ -43,21 +47,44 @@ offset_right = 88.0
 offset_bottom = 106.0
 text = "level 1"
 
-[node name="YesTilesLeft" type="Label" parent="GameManager/Control"]
+[node name="YesTile" type="TextureRect" parent="GameManager/Control"]
 layout_mode = 0
-offset_left = 34.0
+offset_left = 39.0
 offset_top = 193.0
-offset_right = 131.0
-offset_bottom = 238.0
+offset_right = 79.0
+offset_bottom = 233.0
+texture = ExtResource("3_dvrkx")
+
+[node name="YesTilesLeft" type="Label" parent="GameManager/Control/YesTile"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 11.0
+offset_right = 158.0
+offset_bottom = 56.0
 text = "1"
 
-[node name="NoTiles" type="Label" parent="GameManager/Control"]
+[node name="NoTile" type="TextureRect" parent="GameManager/Control"]
+visible = false
 layout_mode = 0
-offset_left = 34.0
-offset_top = 238.0
-offset_right = 131.0
-offset_bottom = 283.0
+offset_left = 37.0
+offset_top = 244.0
+offset_right = 77.0
+offset_bottom = 284.0
+texture = ExtResource("4_b1vhr")
+
+[node name="NoTiles" type="Label" parent="GameManager/Control/NoTile"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 8.0
+offset_right = 159.0
+offset_bottom = 53.0
 text = "1"
+
+[node name="UndoSound" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("5_lqts4")
+
+[node name="LevelClearSound" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("6_qklfv")
 
 [node name="BG" type="Node2D" parent="."]
 

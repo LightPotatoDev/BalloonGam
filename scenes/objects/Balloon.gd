@@ -31,12 +31,10 @@ func get_input():
 			for i in range(1,scalable_dir[dir]+1):
 				for p in determine_scale_pos(dir*i):
 					pos_to_add[p] = null
-					
+			
 		if !pos_to_add.is_empty():
+			scale_balloon(pos_to_add.keys())
 			EventBus.one_balloon_scaled.emit()
-				
-		for pos in pos_to_add.keys():
-			scale_balloon(pos)
 			
 func _process(_delta):
 	face_inst.visible = !child_pos.is_empty()
@@ -49,15 +47,21 @@ func determine_scale_pos(dir:Vector2) -> PackedVector2Array:
 			
 	return pos_to_add
 	
-func scale_balloon(pos:Vector2):
-	set_cell(0,pos,0,Vector2.ZERO,balloon_color)
-	child_pos.append(pos)
+func scale_balloon(pos:PackedVector2Array):
+	for p in pos:
+		set_cell(0,p,0,Vector2.ZERO,balloon_color)
+		child_pos.append(p)
+	$BalloonScaleSound.play()
 	await get_tree().process_frame
 	for child in get_children():
 		if child is BalloonTile:
 			child.scale_anim()
 	#TODO: add face anim
 
+func move(dir:Vector2):
+	super.move(dir)
+	$BalloonMoveSound.play()
+	
 func _on_move():
 	super._on_move()
 	child_pos_hist.append(child_snapshot)

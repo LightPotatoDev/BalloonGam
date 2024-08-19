@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c72eakpv5xabw"]
+[gd_scene load_steps=5 format=3 uid="uid://c72eakpv5xabw"]
 
 [ext_resource type="TileSet" uid="uid://bfycqwhvfmjyf" path="res://resources/balloon_tileset.tres" id="1_ad1hs"]
 [ext_resource type="Script" path="res://scenes/objects/Balloon.gd" id="1_igggx"]
+[ext_resource type="AudioStream" uid="uid://c4h82dogw6wqs" path="res://resources/sounds/balloon_move.wav" id="3_7ue2k"]
+[ext_resource type="AudioStream" uid="uid://c62cxpjuwgqss" path="res://resources/sounds/balloon_scale.wav" id="4_tvjr7"]
 
 [node name="Balloon" type="TileMap" groups=["balloon"]]
 tile_set = ExtResource("1_ad1hs")
@@ -12,3 +14,9 @@ is_player = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 15
+
+[node name="BalloonMoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7ue2k")
+
+[node name="BalloonScaleSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tvjr7")

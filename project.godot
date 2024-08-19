@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 EventBus="*res://scenes/EventBus.gd"
 Global="*res://scenes/Global.gd"
+Transition="*res://scenes/Transition.tscn"
+Music="*res://scenes/Music.tscn"
 
 [input]
 
@@ -77,4 +79,4 @@ restart={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.329412, 0.588235, 1, 1)
+environment/defaults/default_clear_color=Color(0.0509804, 0.184314, 0.427451, 1)
