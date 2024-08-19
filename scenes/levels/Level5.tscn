@@ -31,7 +31,6 @@ layer_0/tile_data = PackedInt32Array(196620, 1, 0, 393228, 1, 0, 458764, 1, 0, 6
 script = ExtResource("3_ibfc4")
 
 [node name="Balloon" parent="." instance=ExtResource("4_4jp2c")]
-modulate = Color(1, 0.0862745, 0.313726, 1)
 layer_0/tile_data = PackedInt32Array(589840, 0, 65536, 655376, 0, 65536)
 
 [node name="Objects" type="TileMap" parent="."]

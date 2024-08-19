@@ -3,6 +3,7 @@ class_name Balloon
 
 @onready var balloon_pop_particle = preload("res://scenes/effects/BalloonPopParticle.tscn")
 @onready var balloon_face = preload("res://scenes/objects/BalloonFace.tscn")
+@export_range(1,2) var balloon_color:int = 1
 var face_inst
 
 var scalable_dir = {Vector2.UP:0, Vector2.RIGHT:0, Vector2.DOWN:0, Vector2.LEFT:0}
@@ -49,7 +50,7 @@ func determine_scale_pos(dir:Vector2) -> PackedVector2Array:
 	return pos_to_add
 	
 func scale_balloon(pos:Vector2):
-	set_cell(0,pos,0,Vector2.ZERO,1)
+	set_cell(0,pos,0,Vector2.ZERO,balloon_color)
 	child_pos.append(pos)
 	await get_tree().process_frame
 	for child in get_children():
@@ -79,7 +80,7 @@ func _on_undo():
 
 	for pos in child_pos_hist[-1]:
 		if pos not in cur_child:
-			set_cell(0,pos,0,Vector2.ZERO,1)
+			set_cell(0,pos,0,Vector2.ZERO,balloon_color)
 
 	child_pos = child_pos_hist[-1].duplicate()
 	child_pos_hist.remove_at(child_pos_hist.size()-1)

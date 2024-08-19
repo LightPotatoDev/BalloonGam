@@ -48,5 +48,8 @@ func _process(_delta):
 		EventBus.move.emit()
 		balloon_scaled = false
 		
+	$Control/YesTilesLeft.text = str(yes_tiles_left)
+	$Control/NoTiles.text = str(no_tiles)
+		
 func _on_one_balloon_scaled():
 	balloon_scaled = true

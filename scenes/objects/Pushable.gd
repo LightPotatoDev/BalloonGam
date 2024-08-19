@@ -40,6 +40,8 @@ func _physics_process(_delta):
 func check_move_collision(dir:Vector2, exclude_list = []) -> bool:
 	var movable:bool = true
 	for col in get_all_colliders(dir):
+		if movable == false:
+			break
 		var group = col.get_groups()[0]
 		exclude_list.append(self)
 		if group == "wall":

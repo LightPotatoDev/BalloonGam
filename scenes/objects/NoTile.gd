@@ -5,7 +5,7 @@ var turned_on:bool = false
 func _process(delta):
 	$On.visible = turned_on
 	$Off.visible = !turned_on
-
+	$Area2D.monitoring = true
 
 func _on_area_2d_body_entered(body):
 	turned_on = true

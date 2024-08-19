@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/GameManager.gd" id="1_c0mq4"]
-[ext_resource type="Resource" uid="uid://bs5ftp2dd4rb4" path="res://resources/leveldatas/lv9.tres" id="2_k2dse"]
+[ext_resource type="Resource" uid="uid://ciharxqejugmj" path="res://resources/leveldatas/lv12.tres" id="2_ojq4m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
 font_size = 32
@@ -18,7 +18,7 @@ fill_to = Vector2(0, 0)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
-lv_data = ExtResource("2_k2dse")
+lv_data = ExtResource("2_ojq4m")
 
 [node name="Control" type="Control" parent="GameManager"]
 layout_mode = 3
@@ -42,6 +42,22 @@ offset_top = 83.0
 offset_right = 88.0
 offset_bottom = 106.0
 text = "level 1"
+
+[node name="YesTilesLeft" type="Label" parent="GameManager/Control"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 193.0
+offset_right = 131.0
+offset_bottom = 238.0
+text = "1"
+
+[node name="NoTiles" type="Label" parent="GameManager/Control"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 238.0
+offset_right = 131.0
+offset_bottom = 283.0
+text = "1"
 
 [node name="BG" type="Node2D" parent="."]
 
