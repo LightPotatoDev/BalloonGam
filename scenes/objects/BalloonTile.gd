@@ -2,22 +2,13 @@ extends CharacterBody2D
 class_name BalloonTile
 
 @onready var anim = $AnimationPlayer
-var moved_before:bool = false
-
-func _ready():
-	EventBus.move.connect(_on_move)
-	EventBus.undo.connect(_on_undo)
+#var tween:Tween
 
 func scale_anim():
 	anim.stop()
 	anim.play("scale")
 	
-func _on_move():
-	moved_before = true
-
-func _on_undo():
-	moved_before = false
-
-func _on_area_2d_body_entered(body):
-	if body.get_parent() != self.get_parent() and moved_before:
-		pass
+func on_pos_move(dir:Vector2):
+	$Sprite2D.position -= dir * 32
+	var tween = create_tween()
+	tween.tween_property($Sprite2D,"position",Vector2.ZERO,0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

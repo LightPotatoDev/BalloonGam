@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dercsv1dnftye" path="res://resources/sprites/balloon_smile.png" id="1_hoqck"]
 [ext_resource type="Script" path="res://scenes/objects/BalloonFace.gd" id="2_m02hm"]
 
-[node name="BalloonFace" type="Sprite2D"]
+[node name="BalloonFace" type="Node2D"]
 z_index = 1
-texture = ExtResource("1_hoqck")
 script = ExtResource("2_m02hm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hoqck")
