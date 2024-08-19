@@ -1,7 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6e4lssvwwqxn"]
+[gd_scene load_steps=8 format=3 uid="uid://c6e4lssvwwqxn"]
 
 [ext_resource type="Script" path="res://scenes/objects/AirTank.gd" id="1_476du"]
 [ext_resource type="Texture2D" uid="uid://clv15vrw584nh" path="res://resources/sprites/air_tank.png" id="2_oww25"]
+[ext_resource type="Shader" path="res://resources/shaders/outline.gdshader" id="2_uaxbe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dx2r"]
+resource_local_to_scene = true
+shader = ExtResource("2_uaxbe")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="Animation" id="Animation_4hv1o"]
 resource_name = "air_add"
@@ -31,6 +41,7 @@ dir = Vector2(1, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
+material = SubResource("ShaderMaterial_7dx2r")
 texture = ExtResource("2_oww25")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

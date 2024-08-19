@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://drhavg6b843v7"]
+
+[ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/cloud_floor.png" id="1_d7ixf"]
+[ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_2n68h"]
+[ext_resource type="Script" path="res://scenes/Walls.gd" id="3_qvmcw"]
+[ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="4_pri3b"]
+[ext_resource type="TileSet" uid="uid://bknitdukt8bmp" path="res://resources/object_tilemap.tres" id="5_harka"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7apv3"]
+texture = ExtResource("1_d7ixf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r0334"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_7apv3")
+
+[node name="Level7" type="Node2D"]
+
+[node name="Floors" type="TileMap" parent="."]
+z_index = -2
+tile_set = SubResource("TileSet_r0334")
+format = 2
+layer_0/tile_data = PackedInt32Array(655374, 0, 0, 720910, 0, 0, 786446, 0, 0, 851982, 0, 0, 917518, 0, 0, 983054, 0, 0, 1048590, 0, 0, 655375, 0, 0, 720911, 0, 0, 786447, 0, 0, 851983, 0, 0, 917519, 0, 0, 983055, 0, 0, 1048591, 0, 0, 655376, 0, 0, 720912, 0, 0, 786448, 0, 0, 851984, 0, 0, 917520, 0, 0, 983056, 0, 0, 1048592, 0, 0, 655377, 0, 0, 720913, 0, 0, 786449, 0, 0, 851985, 0, 0, 917521, 0, 0, 983057, 0, 0, 1048593, 0, 0, 655378, 0, 0, 720914, 0, 0, 786450, 0, 0, 851986, 0, 0, 917522, 0, 0, 983058, 0, 0, 1048594, 0, 0, 655379, 0, 0, 720915, 0, 0, 786451, 0, 0, 851987, 0, 0, 917523, 0, 0, 983059, 0, 0, 1048595, 0, 0, 655380, 0, 0, 720916, 0, 0, 786452, 0, 0, 851988, 0, 0, 917524, 0, 0, 983060, 0, 0, 1048596, 0, 0, 655381, 0, 0, 720917, 0, 0, 786453, 0, 0, 851989, 0, 0, 917525, 0, 0, 983061, 0, 0, 1048597, 0, 0, 655382, 0, 0, 720918, 0, 0, 786454, 0, 0, 851990, 0, 0, 917526, 0, 0, 983062, 0, 0, 1048598, 0, 0, 983053, 0, 0, 1048589, 0, 0, 262161, 0, 0, 327697, 0, 0, 393233, 0, 0, 458769, 0, 0, 524305, 0, 0, 589841, 0, 0)
+
+[node name="Walls" type="TileMap" parent="." groups=["wall"]]
+z_index = -1
+tile_set = ExtResource("2_2n68h")
+format = 2
+layer_0/tile_data = PackedInt32Array(983052, 1, 0, 917516, 1, 0, 1048588, 1, 0, 1114124, 1, 0, 1114125, 1, 0, 1114126, 1, 0, 1114127, 1, 0, 1114128, 1, 0, 1114129, 1, 0, 1114130, 1, 0, 1114131, 1, 0, 1114132, 1, 0, 1114133, 1, 0, 1114134, 1, 0, 1114135, 1, 0, 589847, 1, 0, 786455, 1, 0, 851991, 1, 0, 917527, 1, 0, 983063, 1, 0, 1048599, 1, 0, 589837, 1, 0, 589838, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589842, 1, 0, 196624, 1, 0, 917517, 1, 0, 196626, 1, 0, 262162, 1, 0, 327698, 1, 0, 393234, 1, 0, 458770, 1, 0, 524306, 1, 0, 196625, 1, 0, 262160, 1, 0, 327696, 1, 0, 393232, 1, 0, 458768, 1, 0, 524304, 1, 0, 589840, 1, 0, 589839, 1, 0, 655383, 1, 0, 720919, 1, 0, 655373, 1, 0, 720909, 1, 0, 786445, 1, 0, 851981, 1, 0)
+script = ExtResource("3_qvmcw")
+
+[node name="Balloon" parent="." instance=ExtResource("4_pri3b")]
+modulate = Color(1, 0.0862745, 0.313726, 1)
+layer_0/tile_data = PackedInt32Array(262161, 0, 65536)
+
+[node name="Objects" type="TileMap" parent="."]
+tile_set = ExtResource("5_harka")
+format = 2
+layer_0/tile_data = PackedInt32Array(1114125, 0, 524288, 589840, 0, 458752, 393234, 0, 393216, 1048591, 0, 196608, 1048592, 0, 196608, 1048593, 0, 196608, 1048594, 0, 196608, 1048595, 0, 196608, 1048596, 0, 196608, 1048597, 0, 196608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 328)

@@ -2,6 +2,8 @@ extends Pushable
 class_name Balloon
 
 @onready var balloon_pop_particle = preload("res://scenes/effects/BalloonPopParticle.tscn")
+@onready var balloon_face = preload("res://scenes/objects/BalloonFace.tscn")
+var face_inst
 
 var scalable_dir = {Vector2.UP:false, Vector2.RIGHT:false, Vector2.DOWN:false, Vector2.LEFT:false}
 var child_pos_hist = []
@@ -10,6 +12,11 @@ var child_snapshot = []
 func _ready():
 	super._ready()
 	child_snapshot = child_pos.duplicate()
+	
+	var face_pos = child_pos[randi() % child_pos.size()]
+	face_inst = balloon_face.instantiate()
+	face_inst.position = face_pos * 32 + Vector2.ONE * 16
+	add_child(face_inst)
 
 func get_input():
 	super.get_input()
@@ -29,6 +36,9 @@ func get_input():
 				
 		for pos in pos_to_add.keys():
 			scale_balloon(pos)
+			
+func _process(delta):
+	face_inst.visible = !child_pos.is_empty()
 
 func determine_scale_pos(dir:Vector2) -> PackedVector2Array:
 	var pos_to_add:PackedVector2Array = []
@@ -45,6 +55,7 @@ func scale_balloon(pos:Vector2):
 	for child in get_children():
 		if child is BalloonTile:
 			child.scale_anim()
+	#TODO: add face anim
 
 func _on_move():
 	super._on_move()

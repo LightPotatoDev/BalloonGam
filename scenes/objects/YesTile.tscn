@@ -10,10 +10,12 @@
 script = ExtResource("1_ua6af")
 
 [node name="Off" type="Sprite2D" parent="."]
+z_index = 5
 texture = ExtResource("2_ajfuh")
 
 [node name="On" type="Sprite2D" parent="."]
 visible = false
+z_index = 5
 texture = ExtResource("3_0ddma")
 
 [node name="Area2D" type="Area2D" parent="."]

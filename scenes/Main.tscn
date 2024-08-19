@@ -1,8 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/GameManager.gd" id="1_c0mq4"]
-[ext_resource type="PackedScene" uid="uid://oequqvjpuhvy" path="res://scenes/levels/Level1.tscn" id="2_v4e1o"]
-[ext_resource type="Script" path="res://scenes/YesTilesLeft.gd" id="3_m3tfc"]
+[ext_resource type="Resource" uid="uid://yk8bgtvqmll1" path="res://resources/leveldatas/lv4.tres" id="2_lugcj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
+font_size = 32
 
 [sub_resource type="Gradient" id="Gradient_hmtwq"]
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.235294)
@@ -16,8 +18,30 @@ fill_to = Vector2(0, 0)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
+lv_data = ExtResource("2_lugcj")
 
-[node name="Level1" parent="GameManager" instance=ExtResource("2_v4e1o")]
+[node name="Control" type="Control" parent="GameManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Lv" type="Label" parent="GameManager/Control"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 29.0
+offset_right = 132.0
+offset_bottom = 74.0
+text = "level 1"
+label_settings = SubResource("LabelSettings_l5ebs")
+
+[node name="Title" type="Label" parent="GameManager/Control"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 83.0
+offset_right = 88.0
+offset_bottom = 106.0
+text = "level 1"
 
 [node name="BG" type="Node2D" parent="."]
 
@@ -28,15 +52,3 @@ offset_top = -51.0
 offset_right = 1258.0
 offset_bottom = 753.0
 texture = SubResource("GradientTexture2D_k062w")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="YesTilesLeft" type="Label" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("3_m3tfc")

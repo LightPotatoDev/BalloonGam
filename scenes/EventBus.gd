@@ -4,7 +4,6 @@ signal undo()
 signal move()
 
 signal one_balloon_scaled()
-signal balloon_scaled_global()
 
 signal yes_tile_exist()
 signal yes_tile(power:bool)
