@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://b6kh24sxusbrn"]
+
+[ext_resource type="PackedScene" uid="uid://drhavg6b843v7" path="res://scenes/levels/Level8.tscn" id="1_g6p1u"]
+[ext_resource type="Script" path="res://resources/LevelData.gd" id="2_gyqqh"]
+
+[resource]
+script = ExtResource("2_gyqqh")
+lv_number = 8
+lv_title = "Power Scaling"
+lv_scene = ExtResource("1_g6p1u")

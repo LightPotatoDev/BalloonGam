@@ -13,9 +13,9 @@ func _input(_event):
 func _on_area_2d_body_entered(balloon):
 	colliding = true
 	sprite.material.set_shader_parameter("width", 2)
-	balloon.get_parent().scalable_dir[dir] = true
+	balloon.get_parent().scalable_dir[dir] += 1
 
 func _on_area_2d_body_exited(balloon):
 	colliding = false
 	sprite.material.set_shader_parameter("width", 0)
-	balloon.get_parent().scalable_dir[dir] = false
+	balloon.get_parent().scalable_dir[dir] -= 1

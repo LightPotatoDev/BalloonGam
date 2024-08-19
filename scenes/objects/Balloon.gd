@@ -5,7 +5,7 @@ class_name Balloon
 @onready var balloon_face = preload("res://scenes/objects/BalloonFace.tscn")
 var face_inst
 
-var scalable_dir = {Vector2.UP:false, Vector2.RIGHT:false, Vector2.DOWN:false, Vector2.LEFT:false}
+var scalable_dir = {Vector2.UP:0, Vector2.RIGHT:0, Vector2.DOWN:0, Vector2.LEFT:0}
 var child_pos_hist = []
 var child_snapshot = []
 
@@ -27,8 +27,8 @@ func get_input():
 	if Input.is_action_just_pressed("ui_accept"):
 		var pos_to_add:Dictionary = {} #used as set
 		for dir in scalable_dir:
-			if scalable_dir[dir] == true:
-				for p in determine_scale_pos(dir):
+			for i in range(1,scalable_dir[dir]+1):
+				for p in determine_scale_pos(dir*i):
 					pos_to_add[p] = null
 					
 		if !pos_to_add.is_empty():
@@ -37,13 +37,13 @@ func get_input():
 		for pos in pos_to_add.keys():
 			scale_balloon(pos)
 			
-func _process(delta):
+func _process(_delta):
 	face_inst.visible = !child_pos.is_empty()
 
 func determine_scale_pos(dir:Vector2) -> PackedVector2Array:
 	var pos_to_add:PackedVector2Array = []
 	for pos in child_pos:
-		if check_spot_collision(pos,dir) == null: #TODO: prevent dupes
+		if check_spot_collision(pos,dir) == null:
 			pos_to_add.append(pos + dir)
 			
 	return pos_to_add
@@ -66,8 +66,8 @@ func _on_undo():
 	if child_pos_hist.size() == 0:
 		return
 	
-	var prev_child:Dictionary
-	var cur_child:Dictionary
+	var prev_child:Dictionary = {}
+	var cur_child:Dictionary = {}
 	for p in child_pos_hist[-1]:
 		prev_child[p] = null
 	for p in child_pos:
