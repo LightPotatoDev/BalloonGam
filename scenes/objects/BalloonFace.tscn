@@ -95,7 +95,7 @@ z_index = 1
 script = ExtResource("2_m02hm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(0.903099, 0.903099)
 texture = ExtResource("2_ax4xf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

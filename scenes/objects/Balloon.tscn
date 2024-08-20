@@ -20,3 +20,6 @@ stream = ExtResource("3_7ue2k")
 
 [node name="BalloonScaleSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_tvjr7")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

@@ -4,6 +4,7 @@ class_name Pushable
 var child_pos:PackedVector2Array = []
 var things_to_move = {} #collider:null
 @onready var ray:RayCast2D = $RayCast2D
+@onready var timer:Timer = $Timer
 
 @export var is_player:bool = false
 var tween:Tween
@@ -16,18 +17,25 @@ func _ready():
 	EventBus.move.connect(_on_move)
 		
 func get_input():
-	if Global.game_state != Global.STATES.DEFAULT:
+	if not (Global.game_state == Global.STATES.DEFAULT and is_player and !child_pos.is_empty()):
 		return
 	const INPUTS = {"ui_left":Vector2.LEFT, 
 					"ui_right":Vector2.RIGHT, 
 					"ui_up":Vector2.UP, 
 					"ui_down":Vector2.DOWN}
 	for key in INPUTS.keys():
-		if is_player and Input.is_action_just_pressed(key) and !child_pos.is_empty():
+		var key_just_pressed = Input.is_action_just_pressed(key)
+		var key_hold = Input.is_action_pressed(key) and timer.is_stopped()
+		if key_just_pressed or key_hold:
 			if check_move_collision(INPUTS[key]):
 				instant_finish_tween()
 				EventBus.move.emit()
 				move(INPUTS[key])
+				
+				if key_just_pressed:
+					timer.start(0.2)
+				else:
+					timer.start(0.1)
 			else:
 				cant_move(INPUTS[key])
 			

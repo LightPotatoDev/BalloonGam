@@ -4,15 +4,23 @@ var yes_tiles_left:int = 0
 var no_tiles:int = 0
 var balloon_scaled:bool = false
 
+@onready var timer:Timer = $Timer
+
 @export var lv_data:LevelData
 @export var manual_level_insert:bool = false
 
 func _input(_event):
 	if Global.game_state != Global.STATES.DEFAULT:
 		return
-	if Input.is_action_just_pressed("undo"):
+	var key_just_pressed = Input.is_action_just_pressed('undo')
+	var key_hold = Input.is_action_pressed('undo') and timer.is_stopped()
+	if key_just_pressed or key_hold:
 		EventBus.undo.emit()
 		$UndoSound.play()
+		if key_just_pressed:
+			timer.start(0.08)
+		else:
+			timer.start(0.08)
 	if Input.is_action_just_pressed("restart"):
 		Transition.change_scene("DummyScene")
 
