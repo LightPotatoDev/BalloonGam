@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://u6ic8nfm6x0l"]
+[gd_scene load_steps=11 format=3 uid="uid://u6ic8nfm6x0l"]
 
-[ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/cloud_floor.png" id="1_mbiyl"]
+[ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/objects/cloud_floor.png" id="1_mbiyl"]
 [ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_jtbuv"]
-[ext_resource type="Script" path="res://scenes/Walls.gd" id="3_gj8b1"]
+[ext_resource type="Script" path="res://scenes/objects/Walls.gd" id="3_pkq8i"]
 [ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="4_0buf7"]
 [ext_resource type="TileSet" uid="uid://bknitdukt8bmp" path="res://resources/object_tilemap.tres" id="5_l57qp"]
+[ext_resource type="PackedScene" uid="uid://bkq7xno86tr4y" path="res://scenes/decorations/BalloonDeco.tscn" id="6_ew4h0"]
+[ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="7_1ucla"]
+[ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="8_mprpb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7apv3"]
 texture = ExtResource("1_mbiyl")
@@ -28,7 +31,7 @@ z_index = -1
 tile_set = ExtResource("2_jtbuv")
 format = 2
 layer_0/tile_data = PackedInt32Array(393226, 1, 0, 458762, 1, 0, 524298, 1, 0, 589834, 1, 0, 655370, 1, 0, 720906, 1, 0, 786442, 1, 0, 851978, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851983, 1, 0, 851984, 1, 0, 851985, 1, 0, 851986, 1, 0, 851987, 1, 0, 851988, 1, 0, 851989, 1, 0, 851990, 1, 0, 851991, 1, 0, 851992, 1, 0, 851993, 1, 0, 393241, 1, 0, 458777, 1, 0, 524313, 1, 0, 589849, 1, 0, 655385, 1, 0, 720921, 1, 0, 786457, 1, 0, 327705, 1, 0, 327690, 1, 0, 720917, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 262164, 1, 0, 262165, 1, 0, 262166, 1, 0, 262167, 1, 0, 262168, 1, 0, 262169, 1, 0, 458772, 1, 0, 327700, 1, 0)
-script = ExtResource("3_gj8b1")
+script = ExtResource("3_pkq8i")
 
 [node name="Balloon" parent="." instance=ExtResource("4_0buf7")]
 layer_0/tile_data = PackedInt32Array(720913, 0, 65536, 720914, 0, 65536, 720912, 0, 65536)
@@ -40,3 +43,69 @@ layer_0/tile_data = PackedInt32Array(786443, 0, 262144, 851990, 0, 524288, 78644
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 328)
+
+[node name="Deco" type="Node2D" parent="."]
+
+[node name="BalloonDeco" parent="Deco" instance=ExtResource("6_ew4h0")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(483, 554)
+
+[node name="BalloonDeco2" parent="Deco" instance=ExtResource("6_ew4h0")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(960, 512)
+scale = Vector2(0.7, 0.7)
+move_time = 1.6
+
+[node name="BalloonDeco3" parent="Deco" instance=ExtResource("6_ew4h0")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(782, 586)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_1ucla")
+move_time = 1.8
+
+[node name="BalloonDeco4" parent="Deco" instance=ExtResource("6_ew4h0")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(208, 512)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_1ucla")
+move_y = 8.0
+move_time = 2.2
+
+[node name="SparkleGroup" type="Node2D" parent="Deco"]
+position = Vector2(132, 271)
+
+[node name="SparkleDeco" parent="Deco/SparkleGroup" instance=ExtResource("8_mprpb")]
+position = Vector2(-8, 16.4)
+move_y = 3.0
+
+[node name="SparkleDeco2" parent="Deco/SparkleGroup" instance=ExtResource("8_mprpb")]
+position = Vector2(24, 8.39999)
+scale = Vector2(0.5, 0.5)
+move_y = 2.0
+move_time = 1.2
+
+[node name="SparkleDeco3" parent="Deco/SparkleGroup" instance=ExtResource("8_mprpb")]
+position = Vector2(8, -15.6)
+scale = Vector2(0.35, 0.35)
+move_y = 3.0
+move_time = 1.5
+
+[node name="SparkleGroup2" type="Node2D" parent="Deco"]
+position = Vector2(1005, 252)
+
+[node name="SparkleDeco" parent="Deco/SparkleGroup2" instance=ExtResource("8_mprpb")]
+position = Vector2(-8, 16.4)
+scale = Vector2(0.7, 0.7)
+move_y = 3.0
+
+[node name="SparkleDeco2" parent="Deco/SparkleGroup2" instance=ExtResource("8_mprpb")]
+position = Vector2(16, 7.99997)
+scale = Vector2(0.5, 0.5)
+move_y = 2.0
+move_time = 1.2
+
+[node name="SparkleDeco3" parent="Deco/SparkleGroup2" instance=ExtResource("8_mprpb")]
+position = Vector2(8, 32)
+scale = Vector2(0.35, 0.35)
+move_y = 3.0
+move_time = 1.5

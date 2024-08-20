@@ -1,18 +1,27 @@
-[gd_scene load_steps=14 format=3 uid="uid://2lxmwbgsphcx"]
+[gd_scene load_steps=19 format=3 uid="uid://2lxmwbgsphcx"]
 
-[ext_resource type="Script" path="res://scenes/GameManager.gd" id="1_c0mq4"]
-[ext_resource type="Resource" uid="uid://yk8bgtvqmll1" path="res://resources/leveldatas/lv4.tres" id="2_o7lye"]
-[ext_resource type="Texture2D" uid="uid://jftv3u88ajig" path="res://resources/sprites/placeholders/yes_tile_on.png" id="3_dvrkx"]
-[ext_resource type="Texture2D" uid="uid://b0xhtx3xp1l6p" path="res://resources/sprites/placeholders/no_tile_on.png" id="4_b1vhr"]
+[ext_resource type="Script" path="res://scenes/system/GameManager.gd" id="1_c0mq4"]
+[ext_resource type="Resource" uid="uid://co5n3r6p4wser" path="res://resources/leveldatas/lv10.tres" id="2_a854t"]
+[ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="3_03q7j"]
+[ext_resource type="Texture2D" uid="uid://culf8v7adle77" path="res://resources/sprites/objects/yes_tile_ui.png" id="4_77rwe"]
 [ext_resource type="AudioStream" uid="uid://c68x2lam2lewr" path="res://resources/sounds/undo.wav" id="5_lqts4"]
+[ext_resource type="LabelSettings" uid="uid://d3afljcnl3gnb" path="res://resources/tiles_left_label.tres" id="5_uuyp4"]
+[ext_resource type="Texture2D" uid="uid://bushsdnoic7pd" path="res://resources/sprites/objects/no_tile_ui.png" id="6_3c1pa"]
 [ext_resource type="AudioStream" uid="uid://bwhj32uf8maxc" path="res://resources/sounds/lvup_kokuti.wav" id="6_qklfv"]
-[ext_resource type="Texture2D" uid="uid://mvlb35jq0iqj" path="res://resources/sprites/cloud.png" id="7_y0wrs"]
-[ext_resource type="Texture2D" uid="uid://cb1buqgrw37en" path="res://resources/sprites/cloud2.png" id="8_b5tv1"]
+[ext_resource type="Texture2D" uid="uid://mvlb35jq0iqj" path="res://resources/sprites/decorations/cloud.png" id="7_y0wrs"]
+[ext_resource type="Texture2D" uid="uid://cb1buqgrw37en" path="res://resources/sprites/decorations/cloud2.png" id="8_b5tv1"]
 [ext_resource type="Material" uid="uid://bheq76h3hhbcm" path="res://resources/star_particle.tres" id="9_f5ohh"]
-[ext_resource type="Texture2D" uid="uid://wl3is1kqty3r" path="res://resources/sprites/star.png" id="10_cg33u"]
+[ext_resource type="Texture2D" uid="uid://wl3is1kqty3r" path="res://resources/sprites/particles/star.png" id="10_cg33u"]
+[ext_resource type="Texture2D" uid="uid://830wowwdoe0s" path="res://resources/sprites/decorations/moon.png" id="13_6bxv0"]
+[ext_resource type="Script" path="res://scenes/decorations/MoonLightDeco.gd" id="14_lh2dt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
-font_size = 32
+font = ExtResource("3_03q7j")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_groea"]
+font = ExtResource("3_03q7j")
+font_size = 24
 
 [sub_resource type="Gradient" id="Gradient_hmtwq"]
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.235294)
@@ -26,7 +35,7 @@ fill_to = Vector2(0, 0)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
-lv_data = ExtResource("2_o7lye")
+lv_data = ExtResource("2_a854t")
 
 [node name="Control" type="Control" parent="GameManager"]
 layout_mode = 3
@@ -40,7 +49,7 @@ offset_left = 35.0
 offset_top = 29.0
 offset_right = 132.0
 offset_bottom = 74.0
-text = "level 1"
+text = "Level 1"
 label_settings = SubResource("LabelSettings_l5ebs")
 
 [node name="Title" type="Label" parent="GameManager/Control"]
@@ -49,40 +58,43 @@ offset_left = 38.0
 offset_top = 83.0
 offset_right = 88.0
 offset_bottom = 106.0
-text = "level 1"
+text = "title"
+label_settings = SubResource("LabelSettings_groea")
 
 [node name="YesTile" type="TextureRect" parent="GameManager/Control"]
 layout_mode = 0
 offset_left = 39.0
-offset_top = 193.0
+offset_top = 131.0
 offset_right = 79.0
-offset_bottom = 233.0
-texture = ExtResource("3_dvrkx")
+offset_bottom = 171.0
+texture = ExtResource("4_77rwe")
 
 [node name="YesTilesLeft" type="Label" parent="GameManager/Control/YesTile"]
 layout_mode = 0
 offset_left = 61.0
-offset_top = 11.0
+offset_top = 2.0
 offset_right = 158.0
-offset_bottom = 56.0
+offset_bottom = 47.0
 text = "1"
+label_settings = ExtResource("5_uuyp4")
 
 [node name="NoTile" type="TextureRect" parent="GameManager/Control"]
 visible = false
 layout_mode = 0
-offset_left = 37.0
-offset_top = 244.0
-offset_right = 77.0
-offset_bottom = 284.0
-texture = ExtResource("4_b1vhr")
+offset_left = 38.0
+offset_top = 186.0
+offset_right = 78.0
+offset_bottom = 226.0
+texture = ExtResource("6_3c1pa")
 
 [node name="NoTiles" type="Label" parent="GameManager/Control/NoTile"]
 layout_mode = 0
 offset_left = 62.0
-offset_top = 8.0
+offset_top = 2.0
 offset_right = 159.0
-offset_bottom = 53.0
+offset_bottom = 47.0
 text = "1"
+label_settings = ExtResource("5_uuyp4")
 
 [node name="UndoSound" type="AudioStreamPlayer" parent="GameManager"]
 stream = ExtResource("5_lqts4")
@@ -96,8 +108,8 @@ one_shot = true
 
 [node name="BG" type="Node2D" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="BG"]
-z_index = -5
+[node name="Gradient" type="TextureRect" parent="BG"]
+z_index = -3
 offset_left = -44.0
 offset_top = -51.0
 offset_right = 1258.0
@@ -160,7 +172,6 @@ modulate = Color(0.2, 0.27451, 0.631373, 1)
 z_index = -4
 position = Vector2(197, 289)
 rotation = 0.126669
-scale = Vector2(1, 1)
 texture = ExtResource("7_y0wrs")
 
 [node name="Cloud3" type="Sprite2D" parent="BG/Clouds"]
@@ -183,7 +194,6 @@ modulate = Color(0.2, 0.27451, 0.631373, 1)
 z_index = -4
 position = Vector2(808.729, 573.529)
 rotation = -0.0266797
-scale = Vector2(1, 1)
 texture = ExtResource("8_b5tv1")
 
 [node name="Cloud12" type="Sprite2D" parent="BG/Clouds"]
@@ -198,7 +208,6 @@ modulate = Color(0.2, 0.27451, 0.631373, 1)
 z_index = -4
 position = Vector2(279, 568)
 rotation = 0.145446
-scale = Vector2(1, 1)
 texture = ExtResource("8_b5tv1")
 
 [node name="Cloud14" type="Sprite2D" parent="BG/Clouds"]
@@ -243,10 +252,43 @@ position = Vector2(1118.69, 606.305)
 rotation = -0.310773
 texture = ExtResource("8_b5tv1")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="BG"]
+[node name="StarParticles" type="GPUParticles2D" parent="BG"]
 z_index = -6
 position = Vector2(591, 329)
 amount = 40
 process_material = ExtResource("9_f5ohh")
 texture = ExtResource("10_cg33u")
 lifetime = 3.0
+
+[node name="Moon" type="Sprite2D" parent="BG"]
+self_modulate = Color(0.333333, 0.384314, 0.65098, 1)
+z_index = -3
+position = Vector2(591, 97)
+texture = ExtResource("13_6bxv0")
+
+[node name="Light" type="Sprite2D" parent="BG/Moon"]
+self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
+z_index = -4
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("13_6bxv0")
+script = ExtResource("14_lh2dt")
+scale_amount = 1.4
+move_time = 3.0
+
+[node name="Light2" type="Sprite2D" parent="BG/Moon"]
+self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
+z_index = -4
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("13_6bxv0")
+script = ExtResource("14_lh2dt")
+scale_amount = 1.4
+move_time = 3.0
+
+[node name="Light3" type="Sprite2D" parent="BG/Moon"]
+self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
+z_index = -4
+scale = Vector2(3.3, 3.3)
+texture = ExtResource("13_6bxv0")
+script = ExtResource("14_lh2dt")
+scale_amount = 1.4
+move_time = 3.0

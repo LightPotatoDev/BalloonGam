@@ -12,6 +12,7 @@ var child_snapshot = []
 
 func _ready():
 	super._ready()
+	EventBus.restart.connect(_on_restart)
 	child_snapshot = child_pos.duplicate()
 	
 	var face_pos = child_pos[randi() % child_pos.size()]
@@ -52,6 +53,7 @@ func scale_balloon(pos:PackedVector2Array):
 		set_cell(0,p,0,Vector2.ZERO,balloon_color)
 		child_pos.append(p)
 	$BalloonScaleSound.play()
+	face_inst.on_scale()
 	await get_tree().process_frame
 	for child in get_children():
 		if child is BalloonTile:
@@ -89,11 +91,19 @@ func _on_undo():
 	child_pos = child_pos_hist[-1].duplicate()
 	child_pos_hist.remove_at(child_pos_hist.size()-1)
 
+func _on_restart():
+	destroy()
+	
 func destroy():
 	var pp = child_pos.duplicate()
 	super.destroy()
+	$BalloonBurstSound.play()
 	for p in pp:
 		var particle = balloon_pop_particle.instantiate()
-		particle.process_material.color = modulate
+		#hardcode moment :(
+		if self.get_name() == "Balloon":
+			particle.process_material.color = Color.html("#ff1650")
+		else:
+			particle.process_material.color = Color.html("#1751ff")
 		particle.position = p * 32 + Vector2.ONE * 16
 		add_child(particle)

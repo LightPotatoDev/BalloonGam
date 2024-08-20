@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce0nxsu65luof"]
 
-[ext_resource type="Texture2D" uid="uid://cyautujmgtdl4" path="res://resources/sprites/circle.png" id="1_vpmrw"]
+[ext_resource type="Texture2D" uid="uid://cyautujmgtdl4" path="res://resources/sprites/particles/circle.png" id="1_bfeaw"]
 
 [sub_resource type="Curve" id="Curve_gvdf0"]
 _data = [Vector2(0, 0), 0.0, 3.2222, 0, 0, Vector2(0.491848, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.73895, 0.0, 0, 0]
@@ -22,5 +22,5 @@ color = Color(0.501961, 0.580392, 0.796078, 1)
 
 [node name="CloudParticle" type="GPUParticles2D"]
 process_material = SubResource("ParticleProcessMaterial_m2p2y")
-texture = ExtResource("1_vpmrw")
+texture = ExtResource("1_bfeaw")
 lifetime = 2.0

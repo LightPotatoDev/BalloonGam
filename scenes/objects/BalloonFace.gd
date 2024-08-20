@@ -18,3 +18,13 @@ func on_pos_move(dir:Vector2):
 	tween.tween_property($Sprite2D,"scale",scale_amount,0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.chain().tween_property($Sprite2D,"scale",Vector2.ONE,0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.chain().tween_property($Sprite2D,"offset",Vector2.ZERO,0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	await anim.animation_finished
+	anim.play('idle')
+	
+func on_scale():
+	anim.stop(false)
+	anim.play('scale')
+	
+	await anim.animation_finished
+	anim.play('idle')

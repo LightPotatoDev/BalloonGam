@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6e4lssvwwqxn"]
 
 [ext_resource type="Script" path="res://scenes/objects/AirTank.gd" id="1_476du"]
-[ext_resource type="Texture2D" uid="uid://clv15vrw584nh" path="res://resources/sprites/air_tank.png" id="2_oww25"]
+[ext_resource type="Texture2D" uid="uid://clv15vrw584nh" path="res://resources/sprites/objects/air_tank.png" id="2_oww25"]
 [ext_resource type="Shader" path="res://resources/shaders/outline.gdshader" id="2_uaxbe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7dx2r"]

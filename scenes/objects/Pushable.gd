@@ -33,9 +33,9 @@ func get_input():
 				move(INPUTS[key])
 				
 				if key_just_pressed:
-					timer.start(0.2)
+					timer.start(0.15)
 				else:
-					timer.start(0.1)
+					timer.start(0.09)
 			else:
 				cant_move(INPUTS[key])
 			

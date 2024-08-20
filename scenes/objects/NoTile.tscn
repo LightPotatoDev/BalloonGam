@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjkfrpn8ml400"]
 
 [ext_resource type="Script" path="res://scenes/objects/NoTile.gd" id="1_0tvp3"]
-[ext_resource type="Texture2D" uid="uid://c6agr7f50l6wp" path="res://resources/sprites/placeholders/no_tile_off.png" id="2_g7hn4"]
-[ext_resource type="Texture2D" uid="uid://b0xhtx3xp1l6p" path="res://resources/sprites/placeholders/no_tile_on.png" id="3_e2l3d"]
+[ext_resource type="Texture2D" uid="uid://c6agr7f50l6wp" path="res://resources/sprites/objects/no_tile_off.png" id="2_g7hn4"]
+[ext_resource type="Texture2D" uid="uid://b0xhtx3xp1l6p" path="res://resources/sprites/objects/no_tile_on.png" id="3_e2l3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7683c"]
 

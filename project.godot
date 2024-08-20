@@ -18,10 +18,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://scenes/EventBus.gd"
-Global="*res://scenes/Global.gd"
-Transition="*res://scenes/Transition.tscn"
-Music="*res://scenes/Music.tscn"
+EventBus="*res://scenes/system/EventBus.gd"
+Global="*res://scenes/system/Global.gd"
+Transition="*res://scenes/system/Transition.tscn"
+Music="*res://scenes/system/Music.tscn"
 
 [input]
 

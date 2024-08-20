@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2w38ma81rdgk"]
 
 [ext_resource type="Script" path="res://scenes/objects/BalloonTile.gd" id="1_mj046"]
-[ext_resource type="Texture2D" uid="uid://2jap1cmbn5vi" path="res://resources/sprites/balloon.png" id="2_l41aw"]
+[ext_resource type="Texture2D" uid="uid://2jap1cmbn5vi" path="res://resources/sprites/objects/balloon.png" id="2_0tkhs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ge4qg"]
 size = Vector2(4, 4)
@@ -32,13 +32,13 @@ modulate = Color(0.0901961, 0.317647, 1, 1)
 script = ExtResource("1_mj046")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_l41aw")
+texture = ExtResource("2_0tkhs")
 
 [node name="Shadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0.239216, 0.239216, 0.239216, 0.65098)
 z_index = -1
 position = Vector2(2, 2)
-texture = ExtResource("2_l41aw")
+texture = ExtResource("2_0tkhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ge4qg")

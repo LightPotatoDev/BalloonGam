@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://du16g7j7n7kmd"]
 
-[ext_resource type="Texture2D" uid="uid://caplh0but8ii" path="res://resources/sprites/triangle.png" id="1_p43bd"]
+[ext_resource type="Texture2D" uid="uid://caplh0but8ii" path="res://resources/sprites/particles/triangle.png" id="1_tauex"]
 [ext_resource type="Script" path="res://scenes/effects/FreeParticle.gd" id="2_drx00"]
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_gcoul"]
@@ -13,6 +13,7 @@ point_count = 2
 curve = SubResource("Curve_6onav")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m2p2y"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(2, 2, 1)
 emission_shape = 3
@@ -34,7 +35,7 @@ scale_curve = SubResource("CurveTexture_81e0r")
 emitting = false
 amount = 2
 process_material = SubResource("ParticleProcessMaterial_m2p2y")
-texture = ExtResource("1_p43bd")
+texture = ExtResource("1_tauex")
 lifetime = 0.15
 one_shot = true
 explosiveness = 1.0

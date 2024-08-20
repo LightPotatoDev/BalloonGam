@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://ot86smmumj3t"]
 
-[ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/cloud_floor.png" id="1_1wkx8"]
+[ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/objects/cloud_floor.png" id="1_1wkx8"]
 [ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_bx411"]
-[ext_resource type="Script" path="res://scenes/Walls.gd" id="3_i1smu"]
+[ext_resource type="Script" path="res://scenes/objects/Walls.gd" id="3_i1smu"]
 [ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="4_12y3i"]
 [ext_resource type="TileSet" uid="uid://bknitdukt8bmp" path="res://resources/object_tilemap.tres" id="5_34ivx"]
 
