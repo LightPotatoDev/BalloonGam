@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/system/GameManager.gd" id="1_c0mq4"]
-[ext_resource type="Resource" uid="uid://co5n3r6p4wser" path="res://resources/leveldatas/lv10.tres" id="2_a854t"]
+[ext_resource type="Resource" uid="uid://dbkpx1as5ltxy" path="res://resources/leveldatas/lv11.tres" id="2_xmuhf"]
 [ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="3_03q7j"]
 [ext_resource type="Texture2D" uid="uid://culf8v7adle77" path="res://resources/sprites/objects/yes_tile_ui.png" id="4_77rwe"]
 [ext_resource type="AudioStream" uid="uid://c68x2lam2lewr" path="res://resources/sounds/undo.wav" id="5_lqts4"]
@@ -13,7 +13,7 @@
 [ext_resource type="Material" uid="uid://bheq76h3hhbcm" path="res://resources/star_particle.tres" id="9_f5ohh"]
 [ext_resource type="Texture2D" uid="uid://wl3is1kqty3r" path="res://resources/sprites/particles/star.png" id="10_cg33u"]
 [ext_resource type="Texture2D" uid="uid://830wowwdoe0s" path="res://resources/sprites/decorations/moon.png" id="13_6bxv0"]
-[ext_resource type="Script" path="res://scenes/decorations/MoonLightDeco.gd" id="14_lh2dt"]
+[ext_resource type="Script" path="res://scenes/decorations/ScaleTween.gd" id="14_lh2dt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
 font = ExtResource("3_03q7j")
@@ -23,11 +23,11 @@ font_size = 40
 font = ExtResource("3_03q7j")
 font_size = 24
 
-[sub_resource type="Gradient" id="Gradient_hmtwq"]
+[sub_resource type="Gradient" id="Gradient_by6ks"]
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.235294)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_k062w"]
-gradient = SubResource("Gradient_hmtwq")
+gradient = SubResource("Gradient_by6ks")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
@@ -35,7 +35,8 @@ fill_to = Vector2(0, 0)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
-lv_data = ExtResource("2_a854t")
+lv_data = ExtResource("2_xmuhf")
+manual_level_insert = true
 
 [node name="Control" type="Control" parent="GameManager"]
 layout_mode = 3

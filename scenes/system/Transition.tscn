@@ -64,6 +64,7 @@ script = ExtResource("1_7rjvp")
 modulate = Color(0, 0, 0, 0)
 offset_right = 1167.0
 offset_bottom = 657.0
+mouse_filter = 2
 texture = SubResource("CanvasTexture_gh1fy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

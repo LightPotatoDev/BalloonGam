@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="1_o20kf"]
 [ext_resource type="Texture2D" uid="uid://do4qb2anhbur6" path="res://resources/sprites/objects/sparkle.png" id="2_y1bvb"]
-[ext_resource type="Script" path="res://scenes/decorations/BalloonDeco.gd" id="3_jvauk"]
+[ext_resource type="Script" path="res://scenes/decorations/UpDownTween.gd" id="3_jvauk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w2omm"]
 shader = ExtResource("1_o20kf")
