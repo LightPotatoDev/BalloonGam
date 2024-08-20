@@ -18,7 +18,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.4
 scale_max = 0.8
 scale_curve = SubResource("CurveTexture_81e0r")
-color = Color(0.505882, 0.698039, 0.894118, 1)
+color = Color(0.501961, 0.580392, 0.796078, 1)
 
 [node name="CloudParticle" type="GPUParticles2D"]
 process_material = SubResource("ParticleProcessMaterial_m2p2y")
