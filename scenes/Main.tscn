@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://2lxmwbgsphcx"]
+[gd_scene load_steps=12 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/system/GameManager.gd" id="1_c0mq4"]
 [ext_resource type="Resource" uid="uid://dbkpx1as5ltxy" path="res://resources/leveldatas/lv11.tres" id="2_xmuhf"]
@@ -8,12 +8,7 @@
 [ext_resource type="LabelSettings" uid="uid://d3afljcnl3gnb" path="res://resources/tiles_left_label.tres" id="5_uuyp4"]
 [ext_resource type="Texture2D" uid="uid://bushsdnoic7pd" path="res://resources/sprites/objects/no_tile_ui.png" id="6_3c1pa"]
 [ext_resource type="AudioStream" uid="uid://bwhj32uf8maxc" path="res://resources/sounds/lvup_kokuti.wav" id="6_qklfv"]
-[ext_resource type="Texture2D" uid="uid://mvlb35jq0iqj" path="res://resources/sprites/decorations/cloud.png" id="7_y0wrs"]
-[ext_resource type="Texture2D" uid="uid://cb1buqgrw37en" path="res://resources/sprites/decorations/cloud2.png" id="8_b5tv1"]
-[ext_resource type="Material" uid="uid://bheq76h3hhbcm" path="res://resources/star_particle.tres" id="9_f5ohh"]
-[ext_resource type="Texture2D" uid="uid://wl3is1kqty3r" path="res://resources/sprites/particles/star.png" id="10_cg33u"]
-[ext_resource type="Texture2D" uid="uid://830wowwdoe0s" path="res://resources/sprites/decorations/moon.png" id="13_6bxv0"]
-[ext_resource type="Script" path="res://scenes/decorations/ScaleTween.gd" id="14_lh2dt"]
+[ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="9_w6ibx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
 font = ExtResource("3_03q7j")
@@ -23,20 +18,11 @@ font_size = 40
 font = ExtResource("3_03q7j")
 font_size = 24
 
-[sub_resource type="Gradient" id="Gradient_by6ks"]
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.235294)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_k062w"]
-gradient = SubResource("Gradient_by6ks")
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0)
-
 [node name="Main" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
 lv_data = ExtResource("2_xmuhf")
-manual_level_insert = true
 
 [node name="Control" type="Control" parent="GameManager"]
 layout_mode = 3
@@ -99,197 +85,14 @@ label_settings = ExtResource("5_uuyp4")
 
 [node name="UndoSound" type="AudioStreamPlayer" parent="GameManager"]
 stream = ExtResource("5_lqts4")
+volume_db = -3.0
 
 [node name="LevelClearSound" type="AudioStreamPlayer" parent="GameManager"]
 stream = ExtResource("6_qklfv")
+volume_db = -5.0
 
 [node name="Timer" type="Timer" parent="GameManager"]
 wait_time = 0.1
 one_shot = true
 
-[node name="BG" type="Node2D" parent="."]
-
-[node name="Gradient" type="TextureRect" parent="BG"]
-z_index = -3
-offset_left = -44.0
-offset_top = -51.0
-offset_right = 1258.0
-offset_bottom = 753.0
-texture = SubResource("GradientTexture2D_k062w")
-
-[node name="Clouds" type="Node2D" parent="BG"]
-
-[node name="Cloud" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(125, 299)
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud4" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(322, 85)
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud5" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(916, 190)
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud6" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(985, 181)
-rotation = -0.228895
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud7" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(1059.1, 323.977)
-rotation = 0.0885558
-scale = Vector2(1.22396, 1.19431)
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud8" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(955, 337)
-rotation = 0.0885558
-scale = Vector2(1.22396, 1.19431)
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud9" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(864, 334)
-rotation = -0.0838567
-scale = Vector2(1.22396, 1.19431)
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud2" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(197, 289)
-rotation = 0.126669
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud3" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(255, 301)
-rotation = -0.217706
-scale = Vector2(0.78125, 0.791667)
-texture = ExtResource("7_y0wrs")
-
-[node name="Cloud10" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.207843, 0.286275, 0.654902, 1)
-z_index = -4
-position = Vector2(1088.98, 538.773)
-rotation = -0.217706
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud11" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(808.729, 573.529)
-rotation = -0.0266797
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud12" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.184314, 0.254902, 0.596078, 1)
-z_index = -4
-position = Vector2(562, 579)
-rotation = 0.0408732
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud13" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(279, 568)
-rotation = 0.145446
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud14" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.207843, 0.286275, 0.654902, 1)
-z_index = -4
-position = Vector2(78, 521)
-rotation = 0.410499
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud15" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.807843, 0.921569, 0.85098, 1)
-z_index = -4
-position = Vector2(15, 580)
-rotation = 0.410499
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud16" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.74902, 0.894118, 0.803922, 1)
-z_index = -4
-position = Vector2(269, 631)
-rotation = 0.171809
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud17" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.807843, 0.921569, 0.85098, 1)
-z_index = -4
-position = Vector2(533, 647)
-rotation = 0.0210052
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud18" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.768627, 0.905882, 0.819608, 1)
-z_index = -4
-position = Vector2(829.376, 623.301)
-rotation = -0.0613779
-texture = ExtResource("8_b5tv1")
-
-[node name="Cloud19" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.807843, 0.921569, 0.85098, 1)
-z_index = -4
-position = Vector2(1118.69, 606.305)
-rotation = -0.310773
-texture = ExtResource("8_b5tv1")
-
-[node name="StarParticles" type="GPUParticles2D" parent="BG"]
-z_index = -6
-position = Vector2(591, 329)
-amount = 40
-process_material = ExtResource("9_f5ohh")
-texture = ExtResource("10_cg33u")
-lifetime = 3.0
-
-[node name="Moon" type="Sprite2D" parent="BG"]
-self_modulate = Color(0.333333, 0.384314, 0.65098, 1)
-z_index = -3
-position = Vector2(591, 97)
-texture = ExtResource("13_6bxv0")
-
-[node name="Light" type="Sprite2D" parent="BG/Moon"]
-self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
-z_index = -4
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("13_6bxv0")
-script = ExtResource("14_lh2dt")
-scale_amount = 1.4
-move_time = 3.0
-
-[node name="Light2" type="Sprite2D" parent="BG/Moon"]
-self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
-z_index = -4
-scale = Vector2(2.4, 2.4)
-texture = ExtResource("13_6bxv0")
-script = ExtResource("14_lh2dt")
-scale_amount = 1.4
-move_time = 3.0
-
-[node name="Light3" type="Sprite2D" parent="BG/Moon"]
-self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
-z_index = -4
-scale = Vector2(3.3, 3.3)
-texture = ExtResource("13_6bxv0")
-script = ExtResource("14_lh2dt")
-scale_amount = 1.4
-move_time = 3.0
+[node name="BG" parent="." instance=ExtResource("9_w6ibx")]

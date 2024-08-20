@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://eyia7h13ktoc"]
+[gd_scene load_steps=19 format=3 uid="uid://eyia7h13ktoc"]
 
 [ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/objects/cloud_floor.png" id="1_ot5gy"]
 [ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_dlft8"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bkq7xno86tr4y" path="res://scenes/decorations/BalloonDeco.tscn" id="6_8dtal"]
 [ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="7_uci1x"]
 [ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="8_o1wye"]
+[ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="9_m5huq"]
+[ext_resource type="Texture2D" uid="uid://diuwnyo6e4cuh" path="res://resources/sprites/sad.png" id="10_e084h"]
+[ext_resource type="Script" path="res://scenes/decorations/RotationTween.gd" id="11_h6ijt"]
+[ext_resource type="Texture2D" uid="uid://d0vkm4nmq8i5" path="res://resources/sprites/right_arrow.png" id="12_71sx6"]
+[ext_resource type="Texture2D" uid="uid://bpoyx00rfb18r" path="res://resources/sprites/z.png" id="13_iopgb"]
+[ext_resource type="Texture2D" uid="uid://gfr7hr3fge2w" path="res://resources/sprites/supersad.png" id="14_7srwp"]
+[ext_resource type="Texture2D" uid="uid://biinm4o0dh4ug" path="res://resources/sprites/r.png" id="15_s8eeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7apv3"]
 texture = ExtResource("1_ot5gy")
@@ -17,6 +24,13 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_r0334"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_7apv3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4puq"]
+shader = ExtResource("9_m5huq")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-5, -5)
+shader_parameter/color = Color(0, 0, 0, 0.427451)
+shader_parameter/debug = false
 
 [node name="Level2" type="Node2D"]
 
@@ -109,3 +123,51 @@ position = Vector2(8, 32)
 scale = Vector2(0.35, 0.35)
 move_y = 3.0
 move_time = 1.5
+
+[node name="Tuto" type="Node2D" parent="."]
+
+[node name="Sad" type="Sprite2D" parent="Tuto"]
+material = SubResource("ShaderMaterial_k4puq")
+position = Vector2(334.4, 86.4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_e084h")
+script = ExtResource("11_h6ijt")
+randomize_params = true
+
+[node name="RightArrow" type="Sprite2D" parent="Tuto"]
+material = SubResource("ShaderMaterial_k4puq")
+position = Vector2(382.4, 86.4)
+texture = ExtResource("12_71sx6")
+script = ExtResource("11_h6ijt")
+randomize_params = true
+
+[node name="Z" type="Sprite2D" parent="Tuto"]
+material = SubResource("ShaderMaterial_k4puq")
+position = Vector2(430.4, 86.4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("13_iopgb")
+script = ExtResource("11_h6ijt")
+randomize_params = true
+
+[node name="Supersad" type="Sprite2D" parent="Tuto"]
+material = SubResource("ShaderMaterial_k4puq")
+position = Vector2(726.4, 86.4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("14_7srwp")
+script = ExtResource("11_h6ijt")
+randomize_params = true
+
+[node name="RightArrow2" type="Sprite2D" parent="Tuto"]
+material = SubResource("ShaderMaterial_k4puq")
+position = Vector2(774.4, 86.4)
+texture = ExtResource("12_71sx6")
+script = ExtResource("11_h6ijt")
+randomize_params = true
+
+[node name="R" type="Sprite2D" parent="Tuto"]
+material = SubResource("ShaderMaterial_k4puq")
+position = Vector2(822.4, 86.4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("15_s8eeu")
+script = ExtResource("11_h6ijt")
+randomize_params = true

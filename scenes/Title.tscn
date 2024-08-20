@@ -1,272 +1,148 @@
-[gd_scene load_steps=13 format=3 uid="uid://x21ela1b7y3v"]
+[gd_scene load_steps=19 format=3 uid="uid://x21ela1b7y3v"]
 
-[ext_resource type="Texture2D" uid="uid://mvlb35jq0iqj" path="res://resources/sprites/decorations/cloud.png" id="1_0sfmf"]
-[ext_resource type="Texture2D" uid="uid://cb1buqgrw37en" path="res://resources/sprites/decorations/cloud2.png" id="2_sb7ml"]
-[ext_resource type="Material" uid="uid://bheq76h3hhbcm" path="res://resources/star_particle.tres" id="3_s2orv"]
-[ext_resource type="Texture2D" uid="uid://wl3is1kqty3r" path="res://resources/sprites/particles/star.png" id="4_32mr3"]
-[ext_resource type="Texture2D" uid="uid://830wowwdoe0s" path="res://resources/sprites/decorations/moon.png" id="5_1jw4w"]
-[ext_resource type="Script" path="res://scenes/decorations/ScaleTween.gd" id="6_p0kx8"]
-[ext_resource type="Texture2D" uid="uid://dhny8fioqncvh" path="res://resources/sprites/objects/button.png" id="8_6xocb"]
+[ext_resource type="Texture2D" uid="uid://beolqa3bu2nml" path="res://resources/sprites/start_button.png" id="7_3do8i"]
+[ext_resource type="Texture2D" uid="uid://ds7y3klie3u81" path="res://resources/sprites/start_button_smol.png" id="8_k63ea"]
+[ext_resource type="Texture2D" uid="uid://htaeiyfj0508" path="res://resources/sprites/start_button_big.png" id="9_e2v4t"]
+[ext_resource type="AudioStream" uid="uid://bhfrojh4fge0r" path="res://resources/sounds/plop.wav" id="9_fjwa8"]
+[ext_resource type="Texture2D" uid="uid://btgb7h8grbrt0" path="res://resources/sprites/credits_button.png" id="9_mqgdy"]
 [ext_resource type="Script" path="res://scenes/TextureButton.gd" id="9_p7aqe"]
 [ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="9_vh26o"]
+[ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="10_tihwm"]
+[ext_resource type="Texture2D" uid="uid://xnfevqod3052" path="res://resources/sprites/title.png" id="11_vkh2x"]
+[ext_resource type="Script" path="res://scenes/decorations/RotationTween.gd" id="12_iptm8"]
+[ext_resource type="Texture2D" uid="uid://cbpgm5dfco8v7" path="res://resources/sprites/credits_button_smol.png" id="13_esnt8"]
+[ext_resource type="Texture2D" uid="uid://bb34vbg3obdj6" path="res://resources/sprites/credits_button_big.png" id="14_sqkg2"]
+[ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="16_a55gp"]
+[ext_resource type="PackedScene" uid="uid://bkq7xno86tr4y" path="res://scenes/decorations/BalloonDeco.tscn" id="19_gi026"]
+[ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="20_0degn"]
+[ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="21_y1opu"]
 
-[sub_resource type="Gradient" id="Gradient_hmtwq"]
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.235294)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4dxt0"]
+shader = ExtResource("10_tihwm")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-10, -10)
+shader_parameter/color = Color(0, 0, 0, 0.454902)
+shader_parameter/debug = false
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6qsk6"]
-gradient = SubResource("Gradient_hmtwq")
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_3gsgu"]
+[sub_resource type="LabelSettings" id="LabelSettings_ks0fg"]
 font = ExtResource("9_vh26o")
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Title" type="Node2D"]
 
-[node name="BG" type="Node2D" parent="."]
-
-[node name="Gradient" type="TextureRect" parent="BG"]
-z_index = -3
-offset_left = -44.0
-offset_top = -51.0
-offset_right = 1258.0
-offset_bottom = 753.0
-texture = SubResource("GradientTexture2D_6qsk6")
-
-[node name="Clouds" type="Node2D" parent="BG"]
-
-[node name="Cloud" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(125, 299)
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud4" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(322, 85)
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud5" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(916, 190)
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud6" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(985, 181)
-rotation = -0.228895
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud7" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(1059.1, 323.977)
-rotation = 0.0885558
-scale = Vector2(1.22396, 1.19431)
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud8" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(955, 337)
-rotation = 0.0885558
-scale = Vector2(1.22396, 1.19431)
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud9" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(864, 334)
-rotation = -0.0838567
-scale = Vector2(1.22396, 1.19431)
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud2" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(197, 289)
-rotation = 0.126669
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud3" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(255, 301)
-rotation = -0.217706
-scale = Vector2(0.78125, 0.791667)
-texture = ExtResource("1_0sfmf")
-
-[node name="Cloud10" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.207843, 0.286275, 0.654902, 1)
-z_index = -4
-position = Vector2(1088.98, 538.773)
-rotation = -0.217706
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud11" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(808.729, 573.529)
-rotation = -0.0266797
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud12" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.184314, 0.254902, 0.596078, 1)
-z_index = -4
-position = Vector2(562, 579)
-rotation = 0.0408732
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud13" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.2, 0.27451, 0.631373, 1)
-z_index = -4
-position = Vector2(279, 568)
-rotation = 0.145446
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud14" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.207843, 0.286275, 0.654902, 1)
-z_index = -4
-position = Vector2(78, 521)
-rotation = 0.410499
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud15" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.807843, 0.921569, 0.85098, 1)
-z_index = -4
-position = Vector2(15, 580)
-rotation = 0.410499
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud16" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.74902, 0.894118, 0.803922, 1)
-z_index = -4
-position = Vector2(269, 631)
-rotation = 0.171809
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud17" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.807843, 0.921569, 0.85098, 1)
-z_index = -4
-position = Vector2(533, 647)
-rotation = 0.0210052
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud18" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.768627, 0.905882, 0.819608, 1)
-z_index = -4
-position = Vector2(829.376, 623.301)
-rotation = -0.0613779
-texture = ExtResource("2_sb7ml")
-
-[node name="Cloud19" type="Sprite2D" parent="BG/Clouds"]
-modulate = Color(0.807843, 0.921569, 0.85098, 1)
-z_index = -4
-position = Vector2(1118.69, 606.305)
-rotation = -0.310773
-texture = ExtResource("2_sb7ml")
-
-[node name="StarParticles" type="GPUParticles2D" parent="BG"]
-z_index = -6
-position = Vector2(591, 329)
-amount = 40
-process_material = ExtResource("3_s2orv")
-texture = ExtResource("4_32mr3")
-lifetime = 3.0
-
-[node name="Moon" type="Sprite2D" parent="BG"]
-self_modulate = Color(0.333333, 0.384314, 0.65098, 1)
-z_index = -3
-position = Vector2(591, 97)
-texture = ExtResource("5_1jw4w")
-
-[node name="Light" type="Sprite2D" parent="BG/Moon"]
-self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
-z_index = -4
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("5_1jw4w")
-script = ExtResource("6_p0kx8")
-scale_amount = 1.4
-move_time = 3.0
-
-[node name="Light2" type="Sprite2D" parent="BG/Moon"]
-self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
-z_index = -4
-scale = Vector2(2.4, 2.4)
-texture = ExtResource("5_1jw4w")
-script = ExtResource("6_p0kx8")
-scale_amount = 1.4
-move_time = 3.0
-
-[node name="Light3" type="Sprite2D" parent="BG/Moon"]
-self_modulate = Color(0.639216, 0.709804, 0.941176, 0.0784314)
-z_index = -4
-scale = Vector2(3.3, 3.3)
-texture = ExtResource("5_1jw4w")
-script = ExtResource("6_p0kx8")
-scale_amount = 1.4
-move_time = 3.0
-
 [node name="TextureButton" type="TextureButton" parent="."]
-visible = false
-offset_left = 530.0
-offset_top = 422.0
-offset_right = 594.0
-offset_bottom = 462.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("8_6xocb")
+offset_left = 414.0
+offset_top = 423.0
+offset_right = 542.0
+offset_bottom = 471.0
+texture_normal = ExtResource("7_3do8i")
+texture_pressed = ExtResource("8_k63ea")
+texture_hover = ExtResource("9_e2v4t")
 script = ExtResource("9_p7aqe")
 
-[node name="TextureRect" type="TextureRect" parent="TextureButton"]
-modulate = Color(0, 0, 0, 0.431373)
-z_index = -1
-layout_mode = 0
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 67.0
-offset_bottom = 35.0
-texture = ExtResource("8_6xocb")
-
-[node name="Label" type="Label" parent="TextureButton"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 6.5
-offset_right = 60.0
-offset_bottom = 32.5
-text = "Start"
-label_settings = SubResource("LabelSettings_3gsgu")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureButton"]
+stream = ExtResource("9_fjwa8")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
-visible = false
-offset_left = 538.0
+offset_left = 623.0
 offset_top = 422.0
-offset_right = 602.0
+offset_right = 687.0
 offset_bottom = 462.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("8_6xocb")
+texture_normal = ExtResource("9_mqgdy")
+texture_pressed = ExtResource("13_esnt8")
+texture_hover = ExtResource("14_sqkg2")
 script = ExtResource("9_p7aqe")
+scene_to = "Credits"
 
-[node name="TextureRect" type="TextureRect" parent="TextureButton2"]
-modulate = Color(0, 0, 0, 0.431373)
-z_index = -1
-layout_mode = 0
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 67.0
-offset_bottom = 35.0
-texture = ExtResource("8_6xocb")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureButton2"]
+stream = ExtResource("9_fjwa8")
 
-[node name="Label" type="Label" parent="TextureButton2"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 6.5
-offset_right = 60.0
-offset_bottom = 32.5
-text = "Start"
-label_settings = SubResource("LabelSettings_3gsgu")
+[node name="Title" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4dxt0")
+position = Vector2(590, 198)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_vkh2x")
+script = ExtResource("12_iptm8")
+move_angle = 2.0
+move_time = 1.5
+
+[node name="Label" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 592.0
+offset_right = 676.0
+offset_bottom = 622.0
+text = "LightPotato 2024"
+label_settings = SubResource("LabelSettings_ks0fg")
+
+[node name="Deco" type="Node2D" parent="."]
+
+[node name="BalloonDeco" parent="Deco" instance=ExtResource("19_gi026")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(240, 232)
+
+[node name="BalloonDeco2" parent="Deco" instance=ExtResource("19_gi026")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(946, 460)
+scale = Vector2(0.7, 0.7)
+move_time = 1.6
+
+[node name="BalloonDeco3" parent="Deco" instance=ExtResource("19_gi026")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(187, 457)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("20_0degn")
+move_time = 1.8
+
+[node name="BalloonDeco4" parent="Deco" instance=ExtResource("19_gi026")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(976, 211)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("20_0degn")
+move_y = 8.0
+move_time = 2.2
+
+[node name="SparkleGroup" type="Node2D" parent="Deco"]
+position = Vector2(1033, 312)
+
+[node name="SparkleDeco" parent="Deco/SparkleGroup" instance=ExtResource("21_y1opu")]
+position = Vector2(-8, 16.4)
+move_y = 3.0
+
+[node name="SparkleDeco2" parent="Deco/SparkleGroup" instance=ExtResource("21_y1opu")]
+position = Vector2(24, 8.39999)
+scale = Vector2(0.5, 0.5)
+move_y = 2.0
+move_time = 1.2
+
+[node name="SparkleDeco3" parent="Deco/SparkleGroup" instance=ExtResource("21_y1opu")]
+position = Vector2(8, -15.6)
+scale = Vector2(0.35, 0.35)
+move_y = 3.0
+move_time = 1.5
+
+[node name="SparkleGroup2" type="Node2D" parent="Deco"]
+position = Vector2(98, 304)
+
+[node name="SparkleDeco" parent="Deco/SparkleGroup2" instance=ExtResource("21_y1opu")]
+position = Vector2(-8, 16.4)
+scale = Vector2(0.7, 0.7)
+move_y = 3.0
+
+[node name="SparkleDeco2" parent="Deco/SparkleGroup2" instance=ExtResource("21_y1opu")]
+position = Vector2(16, 7.99997)
+scale = Vector2(0.5, 0.5)
+move_y = 2.0
+move_time = 1.2
+
+[node name="SparkleDeco3" parent="Deco/SparkleGroup2" instance=ExtResource("21_y1opu")]
+position = Vector2(8, 32)
+scale = Vector2(0.35, 0.35)
+move_y = 3.0
+move_time = 1.5
+
+[node name="BG" parent="." instance=ExtResource("16_a55gp")]
 
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="TextureButton2" to="TextureButton2" method="_on_pressed"]

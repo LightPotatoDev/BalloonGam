@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://oequqvjpuhvy"]
+[gd_scene load_steps=17 format=3 uid="uid://oequqvjpuhvy"]
 
 [ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/objects/cloud_floor.png" id="1_jclhk"]
 [ext_resource type="Script" path="res://scenes/objects/Walls.gd" id="2_anakg"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="7_b6xar"]
 [ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="7_w2k08"]
 [ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="8_nlpuy"]
+[ext_resource type="Script" path="res://scenes/decorations/RotationTween.gd" id="9_rk284"]
+[ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="10_0hvm2"]
+[ext_resource type="Texture2D" uid="uid://8pyk6032qg2n" path="res://resources/sprites/right_key.png" id="10_3y7hl"]
+[ext_resource type="Texture2D" uid="uid://vqn1s0iihaol" path="res://resources/sprites/arrow.png" id="11_esxxo"]
+[ext_resource type="Texture2D" uid="uid://ccq070ksjvq0q" path="res://resources/sprites/space_key.png" id="12_trasy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7apv3"]
 texture = ExtResource("1_jclhk")
@@ -17,6 +22,13 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_r0334"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_7apv3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lylcn"]
+shader = ExtResource("10_0hvm2")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-3, -3)
+shader_parameter/color = Color(0, 0, 0, 0.490196)
+shader_parameter/debug = false
 
 [node name="Level1" type="Node2D"]
 
@@ -108,4 +120,62 @@ move_time = 1.2
 position = Vector2(8, 32)
 scale = Vector2(0.35, 0.35)
 move_y = 3.0
+move_time = 1.5
+
+[node name="Tuto" type="Node2D" parent="."]
+
+[node name="Keyboard" type="Node2D" parent="Tuto"]
+position = Vector2(472, 552)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("9_rk284")
+move_angle = 2.0
+move_time = 2.0
+
+[node name="RightKey" type="Sprite2D" parent="Tuto/Keyboard"]
+material = SubResource("ShaderMaterial_lylcn")
+texture = ExtResource("10_3y7hl")
+script = ExtResource("9_rk284")
+move_angle = 4.0
+move_time = 1.1
+
+[node name="RightKey2" type="Sprite2D" parent="Tuto/Keyboard"]
+material = SubResource("ShaderMaterial_lylcn")
+position = Vector2(-66.6667, -66.6667)
+rotation = -1.59308
+texture = ExtResource("10_3y7hl")
+script = ExtResource("9_rk284")
+move_angle = 4.0
+move_time = 1.3
+
+[node name="RightKey3" type="Sprite2D" parent="Tuto/Keyboard"]
+material = SubResource("ShaderMaterial_lylcn")
+position = Vector2(-66.6667, 0)
+rotation = -4.65954
+texture = ExtResource("10_3y7hl")
+script = ExtResource("9_rk284")
+move_angle = 4.0
+move_time = 1.4
+
+[node name="RightKey4" type="Sprite2D" parent="Tuto/Keyboard"]
+material = SubResource("ShaderMaterial_lylcn")
+position = Vector2(-133.333, -2.98023e-07)
+rotation = -3.19274
+texture = ExtResource("10_3y7hl")
+script = ExtResource("9_rk284")
+move_angle = 4.0
+move_time = 1.2
+
+[node name="Arrow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lylcn")
+position = Vector2(800, 264)
+texture = ExtResource("11_esxxo")
+script = ExtResource("9_rk284")
+move_angle = 3.0
+
+[node name="SpaceKey" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lylcn")
+position = Vector2(888, 320)
+texture = ExtResource("12_trasy")
+script = ExtResource("9_rk284")
+move_angle = 3.0
 move_time = 1.5

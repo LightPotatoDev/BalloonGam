@@ -18,12 +18,16 @@ collision_mask = 15
 
 [node name="BalloonMoveSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_7ue2k")
+volume_db = -4.0
 
 [node name="BalloonScaleSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_tvjr7")
+volume_db = -4.0
 
 [node name="BalloonBurstSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_hl62g")
+volume_db = -10.0
+pitch_scale = 1.5
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
