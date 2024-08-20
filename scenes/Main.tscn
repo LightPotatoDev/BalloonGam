@@ -1,29 +1,98 @@
-[gd_scene load_steps=5 format=3 uid="uid://2lxmwbgsphcx"]
+[gd_scene load_steps=12 format=3 uid="uid://2lxmwbgsphcx"]
 
-[ext_resource type="Script" path="res://scenes/GameManager.gd" id="1_c0mq4"]
-[ext_resource type="PackedScene" uid="uid://oequqvjpuhvy" path="res://scenes/levels/Level1.tscn" id="2_v4e1o"]
+[ext_resource type="Script" path="res://scenes/system/GameManager.gd" id="1_c0mq4"]
+[ext_resource type="Resource" uid="uid://dbkpx1as5ltxy" path="res://resources/leveldatas/lv11.tres" id="2_xmuhf"]
+[ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="3_03q7j"]
+[ext_resource type="Texture2D" uid="uid://culf8v7adle77" path="res://resources/sprites/objects/yes_tile_ui.png" id="4_77rwe"]
+[ext_resource type="AudioStream" uid="uid://c68x2lam2lewr" path="res://resources/sounds/undo.wav" id="5_lqts4"]
+[ext_resource type="LabelSettings" uid="uid://d3afljcnl3gnb" path="res://resources/tiles_left_label.tres" id="5_uuyp4"]
+[ext_resource type="Texture2D" uid="uid://bushsdnoic7pd" path="res://resources/sprites/objects/no_tile_ui.png" id="6_3c1pa"]
+[ext_resource type="AudioStream" uid="uid://bwhj32uf8maxc" path="res://resources/sounds/lvup_kokuti.wav" id="6_qklfv"]
+[ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="9_w6ibx"]
 
-[sub_resource type="Gradient" id="Gradient_hmtwq"]
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.235294)
+[sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
+font = ExtResource("3_03q7j")
+font_size = 40
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_k062w"]
-gradient = SubResource("Gradient_hmtwq")
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0)
+[sub_resource type="LabelSettings" id="LabelSettings_groea"]
+font = ExtResource("3_03q7j")
+font_size = 24
 
 [node name="Main" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
+lv_data = ExtResource("2_xmuhf")
 
-[node name="Level1" parent="GameManager" instance=ExtResource("2_v4e1o")]
+[node name="Control" type="Control" parent="GameManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="BG" type="Node2D" parent="."]
+[node name="Lv" type="Label" parent="GameManager/Control"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 29.0
+offset_right = 132.0
+offset_bottom = 74.0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_l5ebs")
 
-[node name="TextureRect" type="TextureRect" parent="BG"]
-z_index = -5
-offset_left = -44.0
-offset_top = -51.0
-offset_right = 1258.0
-offset_bottom = 753.0
-texture = SubResource("GradientTexture2D_k062w")
+[node name="Title" type="Label" parent="GameManager/Control"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 83.0
+offset_right = 88.0
+offset_bottom = 106.0
+text = "title"
+label_settings = SubResource("LabelSettings_groea")
+
+[node name="YesTile" type="TextureRect" parent="GameManager/Control"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 131.0
+offset_right = 79.0
+offset_bottom = 171.0
+texture = ExtResource("4_77rwe")
+
+[node name="YesTilesLeft" type="Label" parent="GameManager/Control/YesTile"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 2.0
+offset_right = 158.0
+offset_bottom = 47.0
+text = "1"
+label_settings = ExtResource("5_uuyp4")
+
+[node name="NoTile" type="TextureRect" parent="GameManager/Control"]
+visible = false
+layout_mode = 0
+offset_left = 38.0
+offset_top = 186.0
+offset_right = 78.0
+offset_bottom = 226.0
+texture = ExtResource("6_3c1pa")
+
+[node name="NoTiles" type="Label" parent="GameManager/Control/NoTile"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 2.0
+offset_right = 159.0
+offset_bottom = 47.0
+text = "1"
+label_settings = ExtResource("5_uuyp4")
+
+[node name="UndoSound" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("5_lqts4")
+volume_db = -3.0
+
+[node name="LevelClearSound" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("6_qklfv")
+volume_db = -5.0
+
+[node name="Timer" type="Timer" parent="GameManager"]
+wait_time = 0.1
+one_shot = true
+
+[node name="BG" parent="." instance=ExtResource("9_w6ibx")]

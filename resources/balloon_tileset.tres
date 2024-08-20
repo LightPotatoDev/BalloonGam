@@ -1,9 +1,11 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bfycqwhvfmjyf"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://bfycqwhvfmjyf"]
 
-[ext_resource type="PackedScene" uid="uid://bmghjdu7kggnd" path="res://scenes/objects/BalloonTile.tscn" id="1_t0ts6"]
+[ext_resource type="PackedScene" uid="uid://bmghjdu7kggnd" path="res://scenes/objects/BalloonTileRed.tscn" id="1_3se03"]
+[ext_resource type="PackedScene" uid="uid://b2w38ma81rdgk" path="res://scenes/objects/BalloonTileBlue.tscn" id="2_ho58v"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bepkv"]
-scenes/1/scene = ExtResource("1_t0ts6")
+scenes/1/scene = ExtResource("1_3se03")
+scenes/2/scene = ExtResource("2_ho58v")
 
 [resource]
 tile_size = Vector2i(32, 32)

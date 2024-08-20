@@ -10,9 +10,11 @@ func _process(delta):
 	$Off.visible = !turned_on
 
 func _on_area_2d_body_entered(_body):
+	await get_tree().process_frame
 	turned_on = true
 	EventBus.yes_tile.emit(true)
 
 func _on_area_2d_body_exited(_body):
+	await get_tree().process_frame
 	turned_on = false
 	EventBus.yes_tile.emit(false)

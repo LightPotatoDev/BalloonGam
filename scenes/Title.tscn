@@ -1,0 +1,148 @@
+[gd_scene load_steps=19 format=3 uid="uid://x21ela1b7y3v"]
+
+[ext_resource type="Texture2D" uid="uid://beolqa3bu2nml" path="res://resources/sprites/start_button.png" id="7_3do8i"]
+[ext_resource type="Texture2D" uid="uid://ds7y3klie3u81" path="res://resources/sprites/start_button_smol.png" id="8_k63ea"]
+[ext_resource type="Texture2D" uid="uid://htaeiyfj0508" path="res://resources/sprites/start_button_big.png" id="9_e2v4t"]
+[ext_resource type="AudioStream" uid="uid://bhfrojh4fge0r" path="res://resources/sounds/plop.wav" id="9_fjwa8"]
+[ext_resource type="Texture2D" uid="uid://btgb7h8grbrt0" path="res://resources/sprites/credits_button.png" id="9_mqgdy"]
+[ext_resource type="Script" path="res://scenes/TextureButton.gd" id="9_p7aqe"]
+[ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="9_vh26o"]
+[ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="10_tihwm"]
+[ext_resource type="Texture2D" uid="uid://xnfevqod3052" path="res://resources/sprites/title.png" id="11_vkh2x"]
+[ext_resource type="Script" path="res://scenes/decorations/RotationTween.gd" id="12_iptm8"]
+[ext_resource type="Texture2D" uid="uid://cbpgm5dfco8v7" path="res://resources/sprites/credits_button_smol.png" id="13_esnt8"]
+[ext_resource type="Texture2D" uid="uid://bb34vbg3obdj6" path="res://resources/sprites/credits_button_big.png" id="14_sqkg2"]
+[ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="16_a55gp"]
+[ext_resource type="PackedScene" uid="uid://bkq7xno86tr4y" path="res://scenes/decorations/BalloonDeco.tscn" id="19_gi026"]
+[ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="20_0degn"]
+[ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="21_y1opu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4dxt0"]
+shader = ExtResource("10_tihwm")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-10, -10)
+shader_parameter/color = Color(0, 0, 0, 0.454902)
+shader_parameter/debug = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_ks0fg"]
+font = ExtResource("9_vh26o")
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Node2D"]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 414.0
+offset_top = 423.0
+offset_right = 542.0
+offset_bottom = 471.0
+texture_normal = ExtResource("7_3do8i")
+texture_pressed = ExtResource("8_k63ea")
+texture_hover = ExtResource("9_e2v4t")
+script = ExtResource("9_p7aqe")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureButton"]
+stream = ExtResource("9_fjwa8")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_left = 623.0
+offset_top = 422.0
+offset_right = 687.0
+offset_bottom = 462.0
+texture_normal = ExtResource("9_mqgdy")
+texture_pressed = ExtResource("13_esnt8")
+texture_hover = ExtResource("14_sqkg2")
+script = ExtResource("9_p7aqe")
+scene_to = "Credits"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureButton2"]
+stream = ExtResource("9_fjwa8")
+
+[node name="Title" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4dxt0")
+position = Vector2(590, 198)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_vkh2x")
+script = ExtResource("12_iptm8")
+move_angle = 2.0
+move_time = 1.5
+
+[node name="Label" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 592.0
+offset_right = 676.0
+offset_bottom = 622.0
+text = "LightPotato 2024"
+label_settings = SubResource("LabelSettings_ks0fg")
+
+[node name="Deco" type="Node2D" parent="."]
+
+[node name="BalloonDeco" parent="Deco" instance=ExtResource("19_gi026")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(240, 232)
+
+[node name="BalloonDeco2" parent="Deco" instance=ExtResource("19_gi026")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(946, 460)
+scale = Vector2(0.7, 0.7)
+move_time = 1.6
+
+[node name="BalloonDeco3" parent="Deco" instance=ExtResource("19_gi026")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(187, 457)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("20_0degn")
+move_time = 1.8
+
+[node name="BalloonDeco4" parent="Deco" instance=ExtResource("19_gi026")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(976, 211)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("20_0degn")
+move_y = 8.0
+move_time = 2.2
+
+[node name="SparkleGroup" type="Node2D" parent="Deco"]
+position = Vector2(1033, 312)
+
+[node name="SparkleDeco" parent="Deco/SparkleGroup" instance=ExtResource("21_y1opu")]
+position = Vector2(-8, 16.4)
+move_y = 3.0
+
+[node name="SparkleDeco2" parent="Deco/SparkleGroup" instance=ExtResource("21_y1opu")]
+position = Vector2(24, 8.39999)
+scale = Vector2(0.5, 0.5)
+move_y = 2.0
+move_time = 1.2
+
+[node name="SparkleDeco3" parent="Deco/SparkleGroup" instance=ExtResource("21_y1opu")]
+position = Vector2(8, -15.6)
+scale = Vector2(0.35, 0.35)
+move_y = 3.0
+move_time = 1.5
+
+[node name="SparkleGroup2" type="Node2D" parent="Deco"]
+position = Vector2(98, 304)
+
+[node name="SparkleDeco" parent="Deco/SparkleGroup2" instance=ExtResource("21_y1opu")]
+position = Vector2(-8, 16.4)
+scale = Vector2(0.7, 0.7)
+move_y = 3.0
+
+[node name="SparkleDeco2" parent="Deco/SparkleGroup2" instance=ExtResource("21_y1opu")]
+position = Vector2(16, 7.99997)
+scale = Vector2(0.5, 0.5)
+move_y = 2.0
+move_time = 1.2
+
+[node name="SparkleDeco3" parent="Deco/SparkleGroup2" instance=ExtResource("21_y1opu")]
+position = Vector2(8, 32)
+scale = Vector2(0.35, 0.35)
+move_y = 3.0
+move_time = 1.5
+
+[node name="BG" parent="." instance=ExtResource("16_a55gp")]
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="TextureButton2" to="TextureButton2" method="_on_pressed"]

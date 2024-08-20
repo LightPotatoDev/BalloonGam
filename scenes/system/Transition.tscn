@@ -1,0 +1,291 @@
+[gd_scene load_steps=16 format=3 uid="uid://d01cgqje1vwoh"]
+
+[ext_resource type="Script" path="res://scenes/system/Transition.gd" id="1_7rjvp"]
+[ext_resource type="Texture2D" uid="uid://cy5smm28omojv" path="res://resources/sprites/decorations/balloon_transition.png" id="2_2bk55"]
+[ext_resource type="AudioStream" uid="uid://cc32eege3b3ff" path="res://resources/sounds/balloon_burst.wav" id="3_3ejkh"]
+[ext_resource type="Texture2D" uid="uid://caplh0but8ii" path="res://resources/sprites/particles/triangle.png" id="3_3xgic"]
+
+[sub_resource type="Animation" id="Animation_8mftl"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-668, 678)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BalloonLayer1:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BalloonLayer2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BalloonLayer3:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ioepq"]
+resource_name = "trans_in"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-668, 678), Vector2(-668, 678), Vector2(-668, -900)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BalloonLayer1:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BalloonLayer2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BalloonLayer3:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_w8440"]
+resource_name = "trans_out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 0, 1),
+"update": 0,
+"values": [Vector2(-668, -900), Vector2(-668, -900), Vector2(-668, 900)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PopParticle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qmmgn"]
+_data = {
+"RESET": SubResource("Animation_8mftl"),
+"trans_in": SubResource("Animation_ioepq"),
+"trans_out": SubResource("Animation_w8440")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mn28v"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 200, 0)
+emission_shape_scale = Vector3(600, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 1200.0
+initial_velocity_max = 1500.0
+gravity = Vector3(0, -1000, 0)
+linear_accel_max = 56.75
+scale_max = 2.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_42rcy"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 300, 0)
+emission_shape_scale = Vector3(600, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 1200.0
+initial_velocity_max = 1500.0
+gravity = Vector3(0, -1000, 0)
+linear_accel_max = 56.75
+scale_min = 2.0
+scale_max = 3.0
+color = Color(0.670588, 0.670588, 0.670588, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fg8ds"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 400, 0)
+emission_shape_scale = Vector3(600, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 1200.0
+initial_velocity_max = 1500.0
+gravity = Vector3(0, -1000, 0)
+linear_accel_max = 56.75
+scale_min = 3.0
+scale_max = 4.0
+color = Color(0.560784, 0.560784, 0.560784, 1)
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_gcoul"]
+
+[sub_resource type="Curve" id="Curve_6onav"]
+_data = [Vector2(0, 1), 0.0, -3.21249, 0, 0, Vector2(1, 0), -0.166016, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_81e0r"]
+curve = SubResource("Curve_6onav")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_afq7k"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(100, 100, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_max = 720.0
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 3000.0
+initial_velocity_max = 5000.0
+directional_velocity_min = 0.0
+directional_velocity_max = 0.0
+directional_velocity_curve = SubResource("CurveXYZTexture_gcoul")
+gravity = Vector3(0, 0, 0)
+scale_min = 30.0
+scale_max = 60.0
+scale_curve = SubResource("CurveTexture_81e0r")
+color = Color(0.0156863, 0.0313726, 0.129412, 1)
+
+[node name="Transition" type="CanvasLayer"]
+script = ExtResource("1_7rjvp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 104
+offset_left = -668.0
+offset_top = 678.0
+offset_right = 1832.0
+offset_bottom = 4678.0
+mouse_filter = 2
+texture = ExtResource("2_2bk55")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qmmgn")
+}
+
+[node name="BalloonLayer1" type="GPUParticles2D" parent="."]
+z_index = 100
+position = Vector2(585, 612)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_mn28v")
+texture = ExtResource("2_2bk55")
+lifetime = 1.4
+
+[node name="BalloonLayer2" type="GPUParticles2D" parent="."]
+z_index = 100
+position = Vector2(585, 614)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_42rcy")
+texture = ExtResource("2_2bk55")
+lifetime = 1.4
+
+[node name="BalloonLayer3" type="GPUParticles2D" parent="."]
+z_index = 100
+position = Vector2(587, 614)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_fg8ds")
+texture = ExtResource("2_2bk55")
+lifetime = 1.4
+
+[node name="PopParticle" type="GPUParticles2D" parent="."]
+z_index = 100
+position = Vector2(587, 313)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_afq7k")
+texture = ExtResource("3_3xgic")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3ejkh")
+volume_db = -10.0

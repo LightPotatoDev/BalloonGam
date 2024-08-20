@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c72eakpv5xabw"]
+
+[ext_resource type="TileSet" uid="uid://bfycqwhvfmjyf" path="res://resources/balloon_tileset.tres" id="1_ad1hs"]
+[ext_resource type="Script" path="res://scenes/objects/Balloon.gd" id="1_igggx"]
+
+[node name="Balloon" type="TileMap" groups=["balloon"]]
+tile_set = ExtResource("1_ad1hs")
+format = 2
+layer_0/tile_data = PackedInt32Array(65534, 0, 65536, 65535, 0, 65536, 0, 0, 65536, 1, 0, 65536)
+script = ExtResource("1_igggx")
+is_player = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 15

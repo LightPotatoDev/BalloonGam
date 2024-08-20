@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2ikhy8cp8sm"]
+
+[ext_resource type="Texture2D" uid="uid://b5adm5lljkm43" path="res://resources/sprites/back_button_smol.png" id="2_4f01s"]
+[ext_resource type="Texture2D" uid="uid://b8jtokepgl1t2" path="res://resources/sprites/back_button_big.png" id="3_jdhv7"]
+[ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="5_dcyfk"]
+[ext_resource type="Texture2D" uid="uid://cvltr5uw2i0ih" path="res://resources/sprites/back_button.png" id="7_5sess"]
+[ext_resource type="Script" path="res://scenes/TextureButton.gd" id="8_co03r"]
+[ext_resource type="AudioStream" uid="uid://bhfrojh4fge0r" path="res://resources/sounds/plop.wav" id="9_63r1i"]
+[ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="13_b2cbn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ks0fg"]
+font = ExtResource("13_b2cbn")
+font_size = 24
+
+[node name="Title" type="Node2D"]
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_left = 529.0
+offset_top = 531.0
+offset_right = 657.0
+offset_bottom = 579.0
+texture_normal = ExtResource("7_5sess")
+texture_pressed = ExtResource("2_4f01s")
+texture_hover = ExtResource("3_jdhv7")
+script = ExtResource("8_co03r")
+scene_to = "Title"
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton2"]
+modulate = Color(0, 0, 0, 0.431373)
+z_index = -1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 67.0
+offset_bottom = 35.0
+texture = ExtResource("7_5sess")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureButton2"]
+stream = ExtResource("9_63r1i")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 204.0
+offset_top = 35.0
+offset_right = 977.0
+offset_bottom = 494.0
+text = "[Shaders]
+2d outline/inline by Juulpower, 2d shadows shader by TAB_mk
+
+[Song]
+Nostalgia by Musmus
+
+[Sfx]
+Stretching effect with balloons by Soundstack, Plop! by Breviceps,
+Balloon Inflating by Angel_Perez_Grandi, Balloon-Burst-07 by Gniffelbaf
+
+[Playtesters]
+Lord Marshmal, NanaEverlasting, sunder, Actual G, drc
+
+GMTK Game Jam 2024 Entry"
+label_settings = SubResource("LabelSettings_ks0fg")
+horizontal_alignment = 1
+
+[node name="BG" parent="." instance=ExtResource("5_dcyfk")]
+
+[connection signal="pressed" from="TextureButton2" to="TextureButton2" method="_on_pressed"]

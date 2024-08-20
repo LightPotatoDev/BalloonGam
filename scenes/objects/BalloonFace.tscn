@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=3 uid="uid://8dp54owhmmbg"]
+
+[ext_resource type="Texture2D" uid="uid://b4y670km4uon" path="res://resources/sprites/objects/balloon_surprised1.png" id="2_aekja"]
+[ext_resource type="Script" path="res://scenes/objects/BalloonFace.gd" id="2_m02hm"]
+[ext_resource type="Texture2D" uid="uid://crc8iusmbb5n7" path="res://resources/sprites/objects/balloon_smile2.png" id="3_u6hnm"]
+[ext_resource type="Texture2D" uid="uid://dercsv1dnftye" path="res://resources/sprites/objects/balloon_smile.png" id="4_vp5bc"]
+[ext_resource type="Texture2D" uid="uid://blu1p4l6cxtpm" path="res://resources/sprites/objects/balloon_smile1.png" id="5_1rq40"]
+[ext_resource type="Texture2D" uid="uid://spt8uasssm4u" path="res://resources/sprites/objects/balloon_scale1.png" id="6_14hqt"]
+
+[sub_resource type="Animation" id="Animation_pdfkj"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_u6hnm"), ExtResource("4_vp5bc")]
+}
+
+[sub_resource type="Animation" id="Animation_n5kro"]
+resource_name = "move"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.3),
+"transitions": PackedFloat32Array(-2, -2, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_aekja"), ExtResource("5_1rq40")]
+}
+
+[sub_resource type="Animation" id="Animation_sa6th"]
+resource_name = "scale"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25, 0.3),
+"transitions": PackedFloat32Array(0.535887, -2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_14hqt"), ExtResource("4_vp5bc")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yf8ub"]
+_data = {
+"idle": SubResource("Animation_pdfkj"),
+"move": SubResource("Animation_n5kro"),
+"scale": SubResource("Animation_sa6th")
+}
+
+[node name="BalloonFace" type="Node2D"]
+z_index = 1
+script = ExtResource("2_m02hm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_vp5bc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yf8ub")
+}
+autoplay = "idle"

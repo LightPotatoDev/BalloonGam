@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://drl3x2au3hk07"]
+
+[ext_resource type="PackedScene" uid="uid://dpfbqchnisx2e" path="res://scenes/levels/Level6.tscn" id="1_dhuye"]
+[ext_resource type="Script" path="res://resources/LevelData.gd" id="2_1tymp"]
+
+[resource]
+script = ExtResource("2_1tymp")
+lv_number = 6
+lv_title = "Double Side"
+lv_scene = ExtResource("1_dhuye")

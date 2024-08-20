@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkq7xno86tr4y"]
+
+[ext_resource type="Texture2D" uid="uid://d1l6x7dlb47na" path="res://resources/sprites/decorations/balloon_deco.png" id="1_4hs1o"]
+[ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="1_ew5td"]
+[ext_resource type="Script" path="res://scenes/decorations/UpDownTween.gd" id="3_smk21"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ure72"]
+shader = ExtResource("1_ew5td")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-4, -4)
+shader_parameter/color = Color(0, 0, 0, 0.454902)
+shader_parameter/debug = false
+
+[node name="BalloonDeco" type="Sprite2D"]
+self_modulate = Color(0.733333, 0.792157, 0.964706, 1)
+material = SubResource("ShaderMaterial_ure72")
+position = Vector2(120, 216)
+texture = ExtResource("1_4hs1o")
+script = ExtResource("3_smk21")
+move_y = 10.0
+move_time = 2.0

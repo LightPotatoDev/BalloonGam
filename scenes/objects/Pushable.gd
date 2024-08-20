@@ -4,6 +4,7 @@ class_name Pushable
 var child_pos:PackedVector2Array = []
 var things_to_move = {} #collider:null
 @onready var ray:RayCast2D = $RayCast2D
+@onready var timer:Timer = $Timer
 
 @export var is_player:bool = false
 var tween:Tween
@@ -16,18 +17,25 @@ func _ready():
 	EventBus.move.connect(_on_move)
 		
 func get_input():
-	if Global.game_state != Global.STATES.DEFAULT:
+	if not (Global.game_state == Global.STATES.DEFAULT and is_player and !child_pos.is_empty()):
 		return
 	const INPUTS = {"ui_left":Vector2.LEFT, 
 					"ui_right":Vector2.RIGHT, 
 					"ui_up":Vector2.UP, 
 					"ui_down":Vector2.DOWN}
 	for key in INPUTS.keys():
-		if is_player and Input.is_action_just_pressed(key) and !child_pos.is_empty():
+		var key_just_pressed = Input.is_action_just_pressed(key)
+		var key_hold = Input.is_action_pressed(key) and timer.is_stopped()
+		if key_just_pressed or key_hold:
 			if check_move_collision(INPUTS[key]):
 				instant_finish_tween()
 				EventBus.move.emit()
 				move(INPUTS[key])
+				
+				if key_just_pressed:
+					timer.start(0.15)
+				else:
+					timer.start(0.09)
 			else:
 				cant_move(INPUTS[key])
 			
@@ -39,7 +47,10 @@ func _physics_process(_delta):
 			
 func check_move_collision(dir:Vector2, exclude_list = []) -> bool:
 	var movable:bool = true
+	things_to_move = {}
 	for col in get_all_colliders(dir):
+		if movable == false:
+			break
 		var group = col.get_groups()[0]
 		exclude_list.append(self)
 		if group == "wall":
@@ -47,7 +58,7 @@ func check_move_collision(dir:Vector2, exclude_list = []) -> bool:
 		if group == "balloon" and col.get_parent() not in exclude_list:
 			movable = col.get_parent().check_move_collision(dir, exclude_list)
 			if movable:
-				things_to_move[col] = null
+				things_to_move[col.get_parent()] = null
 
 	return movable
 
@@ -68,10 +79,12 @@ func check_spot_collision(pos:Vector2, dir:Vector2):
 func move(dir:Vector2):
 	for thing in things_to_move:
 		thing.move(dir)
-	things_to_move = {}
 	instant_finish_tween()
-	tween = create_tween()
-	tween.tween_property(self,"position",position+dir*32,0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	position += dir*32
+	
+	for child in get_children():
+		if child is BalloonTile or child is BalloonFace:
+			child.on_pos_move(dir)
 
 func cant_move(dir:Vector2):
 	pass

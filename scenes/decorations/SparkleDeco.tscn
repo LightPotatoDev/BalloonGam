@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://uwc3d4r7yvxc"]
+
+[ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="1_o20kf"]
+[ext_resource type="Texture2D" uid="uid://do4qb2anhbur6" path="res://resources/sprites/objects/sparkle.png" id="2_y1bvb"]
+[ext_resource type="Script" path="res://scenes/decorations/UpDownTween.gd" id="3_jvauk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2omm"]
+shader = ExtResource("1_o20kf")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-4, -4)
+shader_parameter/color = Color(0, 0, 0, 0.427451)
+shader_parameter/debug = false
+
+[node name="Sparkle" type="Sprite2D"]
+material = SubResource("ShaderMaterial_w2omm")
+texture = ExtResource("2_y1bvb")
+script = ExtResource("3_jvauk")
+move_y = 5.0
