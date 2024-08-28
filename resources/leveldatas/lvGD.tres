@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://bw5v44mo7mgol"]
+
+[ext_resource type="PackedScene" uid="uid://cehaenu3jjuwi" path="res://scenes/levels/LevelGD.tscn" id="1_kcbuk"]
+[ext_resource type="Script" path="res://resources/LevelData.gd" id="2_76qio"]
+
+[resource]
+script = ExtResource("2_76qio")
+lv_number = 69
+lv_title = "Thanks for playing"
+lv_scene = ExtResource("1_kcbuk")

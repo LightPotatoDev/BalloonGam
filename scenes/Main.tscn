@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/system/GameManager.gd" id="1_c0mq4"]
-[ext_resource type="Resource" uid="uid://dbkpx1as5ltxy" path="res://resources/leveldatas/lv11.tres" id="2_xmuhf"]
+[ext_resource type="Resource" uid="uid://bw5v44mo7mgol" path="res://resources/leveldatas/lvGD.tres" id="2_n4iqd"]
 [ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="3_03q7j"]
 [ext_resource type="Texture2D" uid="uid://culf8v7adle77" path="res://resources/sprites/objects/yes_tile_ui.png" id="4_77rwe"]
 [ext_resource type="AudioStream" uid="uid://c68x2lam2lewr" path="res://resources/sounds/undo.wav" id="5_lqts4"]
@@ -22,7 +22,8 @@ font_size = 24
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_c0mq4")
-lv_data = ExtResource("2_xmuhf")
+lv_data = ExtResource("2_n4iqd")
+manual_level_insert = true
 
 [node name="Control" type="Control" parent="GameManager"]
 layout_mode = 3
@@ -89,7 +90,7 @@ volume_db = -3.0
 
 [node name="LevelClearSound" type="AudioStreamPlayer" parent="GameManager"]
 stream = ExtResource("6_qklfv")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Timer" type="Timer" parent="GameManager"]
 wait_time = 0.1
