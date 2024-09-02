@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="8_nlpuy"]
 [ext_resource type="Script" path="res://scenes/decorations/RotationTween.gd" id="9_rk284"]
 [ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="10_0hvm2"]
-[ext_resource type="Texture2D" uid="uid://8pyk6032qg2n" path="res://resources/sprites/right_key.png" id="10_3y7hl"]
-[ext_resource type="Texture2D" uid="uid://vqn1s0iihaol" path="res://resources/sprites/arrow.png" id="11_esxxo"]
-[ext_resource type="Texture2D" uid="uid://ccq070ksjvq0q" path="res://resources/sprites/space_key.png" id="12_trasy"]
+[ext_resource type="Texture2D" uid="uid://8pyk6032qg2n" path="res://resources/sprites/ui/right_key.png" id="10_3y7hl"]
+[ext_resource type="Texture2D" uid="uid://vqn1s0iihaol" path="res://resources/sprites/ui/arrow.png" id="11_esxxo"]
+[ext_resource type="Texture2D" uid="uid://ccq070ksjvq0q" path="res://resources/sprites/ui/space_key.png" id="12_trasy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7apv3"]
 texture = ExtResource("1_jclhk")

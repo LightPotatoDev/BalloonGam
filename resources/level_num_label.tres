@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c5kwyjl0utcq5"]
+
+[ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="1_fgn2a"]
+
+[resource]
+font = ExtResource("1_fgn2a")
+font_size = 32

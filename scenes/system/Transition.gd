@@ -5,7 +5,7 @@ func begin():
 	
 func change_scene(sceneName):
 	Global.game_state = Global.STATES.TRANSITION
-	var scene = "res://scenes/" + sceneName + ".tscn"
+	var scene = "res://scenes/scenes/" + sceneName + ".tscn"
 	$AnimationPlayer.play('RESET')
 	$AnimationPlayer.play('trans_in')
 	await $AnimationPlayer.animation_finished

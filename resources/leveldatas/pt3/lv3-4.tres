@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://dfedqdl5v5plr"]
+
+[ext_resource type="PackedScene" uid="uid://73mna0s5a8b3" path="res://scenes/levels/Level13.tscn" id="1_s3mpk"]
+[ext_resource type="Script" path="res://resources/leveldatas/LevelData.gd" id="2_5ilq7"]
+
+[resource]
+script = ExtResource("2_5ilq7")
+lv_number = 13
+lv_title = "Countdown"
+lv_scene = ExtResource("1_s3mpk")

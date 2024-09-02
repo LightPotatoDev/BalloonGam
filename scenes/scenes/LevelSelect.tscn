@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfj80nu08wtm0"]
+
+[ext_resource type="PackedScene" uid="uid://p38cn72r7q1m" path="res://scenes/ui/SceneChangeButton.tscn" id="1_s6i36"]
+[ext_resource type="Texture2D" uid="uid://cujacgktbf4lw" path="res://resources/sprites/ui/button_frame.png" id="2_2euig"]
+[ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="7_u1jw0"]
+
+[node name="Title" type="Node2D"]
+
+[node name="LevelButtons" type="Node2D" parent="."]
+
+[node name="Lv1-1" parent="LevelButtons" instance=ExtResource("1_s6i36")]
+offset_left = 528.0
+offset_top = 256.0
+offset_right = 656.0
+offset_bottom = 320.0
+pivot_offset = Vector2(32, 32)
+texture_normal = ExtResource("2_2euig")
+scene_to = "Main"
+
+[node name="Label" type="Label" parent="LevelButtons/Lv1-1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="BackButton" parent="." instance=ExtResource("1_s6i36")]
+
+[node name="BG" parent="." instance=ExtResource("7_u1jw0")]

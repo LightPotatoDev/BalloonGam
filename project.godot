@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Balloon Gaem"
-run/main_scene="res://scenes/Title.tscn"
+run/main_scene="res://scenes/scenes/Title.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.svg"

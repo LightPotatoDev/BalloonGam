@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://p38cn72r7q1m"]
+
+[ext_resource type="Texture2D" uid="uid://cvltr5uw2i0ih" path="res://resources/sprites/ui/back_button.png" id="1_6hyu8"]
+[ext_resource type="Script" path="res://scenes/ui/SceneChangeButton.gd" id="2_vyi5p"]
+[ext_resource type="AudioStream" uid="uid://bhfrojh4fge0r" path="res://resources/sounds/plop.wav" id="3_0ndpm"]
+
+[node name="BackButton" type="TextureButton"]
+offset_left = 529.0
+offset_top = 531.0
+offset_right = 657.0
+offset_bottom = 579.0
+pivot_offset = Vector2(64, 24)
+texture_normal = ExtResource("1_6hyu8")
+script = ExtResource("2_vyi5p")
+scene_to = "Title"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0ndpm")
+bus = &"Sfx"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=3 uid="uid://x21ela1b7y3v"]
+
+[ext_resource type="PackedScene" uid="uid://p38cn72r7q1m" path="res://scenes/ui/SceneChangeButton.tscn" id="1_5yw2c"]
+[ext_resource type="Texture2D" uid="uid://beolqa3bu2nml" path="res://resources/sprites/ui/start_button.png" id="1_7m0r0"]
+[ext_resource type="Texture2D" uid="uid://btgb7h8grbrt0" path="res://resources/sprites/ui/credits_button.png" id="6_6pteo"]
+[ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="9_l78r6"]
+[ext_resource type="Texture2D" uid="uid://xnfevqod3052" path="res://resources/sprites/title.png" id="10_h7upr"]
+[ext_resource type="Script" path="res://scenes/decorations/RotationTween.gd" id="11_kp68i"]
+[ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="12_ryfcj"]
+[ext_resource type="PackedScene" uid="uid://bkq7xno86tr4y" path="res://scenes/decorations/BalloonDeco.tscn" id="13_35ubx"]
+[ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="14_8vqr8"]
+[ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="15_oh5iq"]
+[ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="16_nm4g0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4dxt0"]
+shader = ExtResource("9_l78r6")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-10, -10)
+shader_parameter/color = Color(0, 0, 0, 0.454902)
+shader_parameter/debug = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_ks0fg"]
+font = ExtResource("12_ryfcj")
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Node2D"]
+
+[node name="StartButton" parent="." instance=ExtResource("1_5yw2c")]
+offset_left = 418.0
+offset_top = 422.0
+offset_right = 546.0
+offset_bottom = 470.0
+texture_normal = ExtResource("1_7m0r0")
+scene_to = "LevelSelect"
+
+[node name="CreditsButton" parent="." instance=ExtResource("1_5yw2c")]
+offset_left = 622.0
+offset_top = 422.0
+offset_right = 750.0
+offset_bottom = 470.0
+texture_normal = ExtResource("6_6pteo")
+scene_to = "Credits"
+
+[node name="Title" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4dxt0")
+position = Vector2(590, 198)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_h7upr")
+script = ExtResource("11_kp68i")
+move_angle = 2.0
+move_time = 1.5
+
+[node name="Label" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 592.0
+offset_right = 676.0
+offset_bottom = 622.0
+text = "LightPotato 2024"
+label_settings = SubResource("LabelSettings_ks0fg")
+
+[node name="Deco" type="Node2D" parent="."]
+
+[node name="BalloonDeco" parent="Deco" instance=ExtResource("13_35ubx")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(240, 232)
+
+[node name="BalloonDeco2" parent="Deco" instance=ExtResource("13_35ubx")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(946, 460)
+scale = Vector2(0.7, 0.7)
+move_time = 1.6
+
+[node name="BalloonDeco3" parent="Deco" instance=ExtResource("13_35ubx")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(187, 457)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("14_8vqr8")
+move_time = 1.8
+
+[node name="BalloonDeco4" parent="Deco" instance=ExtResource("13_35ubx")]
+self_modulate = Color(0.658824, 0.8, 0.984314, 1)
+position = Vector2(976, 211)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("14_8vqr8")
+move_y = 8.0
+move_time = 2.2
+
+[node name="SparkleGroup" type="Node2D" parent="Deco"]
+position = Vector2(1033, 312)
+
+[node name="SparkleDeco" parent="Deco/SparkleGroup" instance=ExtResource("15_oh5iq")]
+position = Vector2(-8, 16.4)
+move_y = 3.0
+
+[node name="SparkleDeco2" parent="Deco/SparkleGroup" instance=ExtResource("15_oh5iq")]
+position = Vector2(24, 8.39999)
+scale = Vector2(0.5, 0.5)
+move_y = 2.0
+move_time = 1.2
+
+[node name="SparkleDeco3" parent="Deco/SparkleGroup" instance=ExtResource("15_oh5iq")]
+position = Vector2(8, -15.6)
+scale = Vector2(0.35, 0.35)
+move_y = 3.0
+move_time = 1.5
+
+[node name="SparkleGroup2" type="Node2D" parent="Deco"]
+position = Vector2(98, 304)
+
+[node name="SparkleDeco" parent="Deco/SparkleGroup2" instance=ExtResource("15_oh5iq")]
+position = Vector2(-8, 16.4)
+scale = Vector2(0.7, 0.7)
+move_y = 3.0
+
+[node name="SparkleDeco2" parent="Deco/SparkleGroup2" instance=ExtResource("15_oh5iq")]
+position = Vector2(16, 7.99997)
+scale = Vector2(0.5, 0.5)
+move_y = 2.0
+move_time = 1.2
+
+[node name="SparkleDeco3" parent="Deco/SparkleGroup2" instance=ExtResource("15_oh5iq")]
+position = Vector2(8, 32)
+scale = Vector2(0.35, 0.35)
+move_y = 3.0
+move_time = 1.5
+
+[node name="BG" parent="." instance=ExtResource("16_nm4g0")]

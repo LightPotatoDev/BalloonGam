@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://dcsq8hnwdnba7"]
+
+[ext_resource type="PackedScene" uid="uid://ddr2q1y0wvige" path="res://scenes/levels/Level5.tscn" id="1_x7kjl"]
+[ext_resource type="Script" path="res://resources/leveldatas/LevelData.gd" id="2_b7okx"]
+
+[resource]
+script = ExtResource("2_b7okx")
+lv_number = 5
+lv_title = "Suspicious Level"
+lv_scene = ExtResource("1_x7kjl")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2ikhy8cp8sm"]
+
+[ext_resource type="PackedScene" uid="uid://p38cn72r7q1m" path="res://scenes/ui/SceneChangeButton.tscn" id="3_ern0m"]
+[ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="5_dcyfk"]
+[ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="13_b2cbn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ks0fg"]
+font = ExtResource("13_b2cbn")
+font_size = 24
+
+[node name="Title" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 204.0
+offset_top = 35.0
+offset_right = 977.0
+offset_bottom = 494.0
+text = "[Shaders]
+2d outline/inline by Juulpower, 2d shadows shader by TAB_mk
+
+[Song]
+Nostalgia by Musmus
+
+[Sfx]
+Stretching effect with balloons by Soundstack, Plop! by Breviceps,
+Balloon Inflating by Angel_Perez_Grandi, Balloon-Burst-07 by Gniffelbaf
+
+[Playtesters]
+Lord Marshmal, NanaEverlasting, sunder, Actual G, drc
+
+GMTK Game Jam 2024 Entry"
+label_settings = SubResource("LabelSettings_ks0fg")
+horizontal_alignment = 1
+
+[node name="BG" parent="." instance=ExtResource("5_dcyfk")]
+
+[node name="BackButton" parent="." instance=ExtResource("3_ern0m")]

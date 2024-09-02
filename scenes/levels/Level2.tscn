@@ -9,12 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="7_uci1x"]
 [ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="8_o1wye"]
 [ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="9_m5huq"]
-[ext_resource type="Texture2D" uid="uid://diuwnyo6e4cuh" path="res://resources/sprites/sad.png" id="10_e084h"]
+[ext_resource type="Texture2D" uid="uid://diuwnyo6e4cuh" path="res://resources/sprites/ui/sad.png" id="10_e084h"]
 [ext_resource type="Script" path="res://scenes/decorations/RotationTween.gd" id="11_h6ijt"]
-[ext_resource type="Texture2D" uid="uid://d0vkm4nmq8i5" path="res://resources/sprites/right_arrow.png" id="12_71sx6"]
-[ext_resource type="Texture2D" uid="uid://bpoyx00rfb18r" path="res://resources/sprites/z.png" id="13_iopgb"]
-[ext_resource type="Texture2D" uid="uid://gfr7hr3fge2w" path="res://resources/sprites/supersad.png" id="14_7srwp"]
-[ext_resource type="Texture2D" uid="uid://biinm4o0dh4ug" path="res://resources/sprites/r.png" id="15_s8eeu"]
+[ext_resource type="Texture2D" uid="uid://d0vkm4nmq8i5" path="res://resources/sprites/ui/right_arrow.png" id="12_71sx6"]
+[ext_resource type="Texture2D" uid="uid://bpoyx00rfb18r" path="res://resources/sprites/ui/z.png" id="13_iopgb"]
+[ext_resource type="Texture2D" uid="uid://gfr7hr3fge2w" path="res://resources/sprites/ui/supersad.png" id="14_7srwp"]
+[ext_resource type="Texture2D" uid="uid://biinm4o0dh4ug" path="res://resources/sprites/ui/r.png" id="15_s8eeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7apv3"]
 texture = ExtResource("1_ot5gy")
