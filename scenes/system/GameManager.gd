@@ -43,7 +43,7 @@ func _ready():
 	if not manual_level_insert:
 		lv_data = load(get_lv_path(Global.lv, Global.sub_lv))
 	add_child(lv_data.lv_scene.instantiate())
-	$Control/Lv.text = "Level "+ str(lv_data.lv_number)
+	$Control/Lv.text = "Level "+ str(Global.lv) + "-" + str(Global.sub_lv)
 	$Control/Title.text = lv_data.lv_title
 	
 func _on_yes_tile_exist():
@@ -77,6 +77,7 @@ func _process(_delta):
 	$Control/NoTile/NoTiles.text = str(no_tiles)
 		
 func handle_level_change():
+	Global.complete_level(Global.lv, Global.sub_lv)
 	if ResourceLoader.exists(get_lv_path(Global.lv, Global.sub_lv+1)):
 		Global.sub_lv += 1
 		Transition.change_scene("Main")

@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://c6cure0yxebko"]
 
-[ext_resource type="PackedScene" uid="uid://jkh2tiwxj417" path="res://scenes/levels/Level15.tscn" id="1_70wfk"]
+[ext_resource type="PackedScene" uid="uid://kow7dlyl7vud" path="res://scenes/levels/Level3-6.tscn" id="1_mh1fd"]
 [ext_resource type="Script" path="res://resources/leveldatas/LevelData.gd" id="2_l6sdt"]
 
 [resource]
 script = ExtResource("2_l6sdt")
-lv_number = 15
-lv_title = "Snake Pass"
-lv_scene = ExtResource("1_70wfk")
+lv_title = "Long Balon"
+lv_scene = ExtResource("1_mh1fd")

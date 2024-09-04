@@ -289,3 +289,4 @@ explosiveness = 1.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3ejkh")
 volume_db = -10.0
+bus = &"Sfx"

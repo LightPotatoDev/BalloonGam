@@ -1,16 +1,16 @@
 [gd_scene load_steps=11 format=3 uid="uid://drkxu571chhfx"]
 
-[ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/objects/cloud_floor.png" id="1_yhig2"]
-[ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_cm1my"]
-[ext_resource type="Script" path="res://scenes/objects/Walls.gd" id="3_7luik"]
-[ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="4_cwv7l"]
-[ext_resource type="TileSet" uid="uid://bknitdukt8bmp" path="res://resources/object_tilemap.tres" id="5_r3g0y"]
-[ext_resource type="PackedScene" uid="uid://bkq7xno86tr4y" path="res://scenes/decorations/BalloonDeco.tscn" id="6_3ad8h"]
-[ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="7_jgue7"]
-[ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="8_37yde"]
+[ext_resource type="Texture2D" uid="uid://cg37twk5njfgt" path="res://resources/sprites/objects/cloud_floor.png" id="1_4r2s7"]
+[ext_resource type="TileSet" uid="uid://cau1xylhqfcta" path="res://resources/terrain_tiles.tres" id="2_oog3o"]
+[ext_resource type="Script" path="res://scenes/objects/Walls.gd" id="3_updrn"]
+[ext_resource type="PackedScene" uid="uid://c72eakpv5xabw" path="res://scenes/objects/Balloon.tscn" id="4_aqwdk"]
+[ext_resource type="TileSet" uid="uid://bknitdukt8bmp" path="res://resources/object_tilemap.tres" id="5_02pep"]
+[ext_resource type="PackedScene" uid="uid://bkq7xno86tr4y" path="res://scenes/decorations/BalloonDeco.tscn" id="6_3gkdy"]
+[ext_resource type="Texture2D" uid="uid://dnf7tkl0s3xhc" path="res://resources/sprites/decorations/balloon_deco2.png" id="7_vfduq"]
+[ext_resource type="PackedScene" uid="uid://uwc3d4r7yvxc" path="res://scenes/decorations/SparkleDeco.tscn" id="8_bmiji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7apv3"]
-texture = ExtResource("1_yhig2")
+texture = ExtResource("1_4r2s7")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
@@ -28,16 +28,16 @@ layer_0/tile_data = PackedInt32Array(786446, 0, 0, 655374, 0, 0, 720910, 0, 0, 7
 
 [node name="Walls" type="TileMap" parent="." groups=["wall"]]
 z_index = -1
-tile_set = ExtResource("2_cm1my")
+tile_set = ExtResource("2_oog3o")
 format = 2
 layer_0/tile_data = PackedInt32Array(262157, 1, 0, 327693, 1, 0, 393229, 1, 0, 458765, 1, 0, 524301, 1, 0, 589837, 1, 0, 655373, 1, 0, 720909, 1, 0, 786445, 1, 0, 851981, 1, 0, 917517, 1, 0, 983053, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 262166, 1, 0, 327702, 1, 0, 393238, 1, 0, 458774, 1, 0, 524310, 1, 0, 589846, 1, 0, 655382, 1, 0, 720918, 1, 0, 786454, 1, 0, 851990, 1, 0, 917526, 1, 0, 983062, 1, 0, 1048598, 1, 0, 262165, 1, 0, 262164, 1, 0, 262163, 1, 0, 262162, 1, 0, 262161, 1, 0, 262160, 1, 0, 262159, 1, 0, 262158, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0, 524308, 1, 0)
-script = ExtResource("3_7luik")
+script = ExtResource("3_updrn")
 
-[node name="Balloon" parent="." instance=ExtResource("4_cwv7l")]
+[node name="Balloon" parent="." instance=ExtResource("4_aqwdk")]
 layer_0/tile_data = PackedInt32Array(786448, 0, 65536)
 
 [node name="Objects" type="TileMap" parent="."]
-tile_set = ExtResource("5_r3g0y")
+tile_set = ExtResource("5_02pep")
 format = 2
 layer_0/tile_data = PackedInt32Array(524301, 0, 458752, 262161, 0, 327680, 917519, 0, 196608, 851983, 0, 196608, 851984, 0, 196608, 851985, 0, 196608, 851986, 0, 196608, 851987, 0, 196608, 851988, 0, 196608)
 
@@ -46,45 +46,45 @@ position = Vector2(576, 328)
 
 [node name="Deco" type="Node2D" parent="."]
 
-[node name="BalloonDeco" parent="Deco" instance=ExtResource("6_3ad8h")]
+[node name="BalloonDeco" parent="Deco" instance=ExtResource("6_3gkdy")]
 self_modulate = Color(0.658824, 0.8, 0.984314, 1)
 position = Vector2(291, 224)
 
-[node name="BalloonDeco2" parent="Deco" instance=ExtResource("6_3ad8h")]
+[node name="BalloonDeco2" parent="Deco" instance=ExtResource("6_3gkdy")]
 self_modulate = Color(0.658824, 0.8, 0.984314, 1)
 position = Vector2(1046, 520)
 scale = Vector2(0.8, 0.8)
 move_time = 1.6
 
-[node name="BalloonDeco3" parent="Deco" instance=ExtResource("6_3ad8h")]
+[node name="BalloonDeco3" parent="Deco" instance=ExtResource("6_3gkdy")]
 self_modulate = Color(0.658824, 0.8, 0.984314, 1)
 position = Vector2(912, 271)
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_jgue7")
+texture = ExtResource("7_vfduq")
 move_time = 1.8
 
-[node name="BalloonDeco4" parent="Deco" instance=ExtResource("6_3ad8h")]
+[node name="BalloonDeco4" parent="Deco" instance=ExtResource("6_3gkdy")]
 self_modulate = Color(0.658824, 0.8, 0.984314, 1)
 position = Vector2(208, 512)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("7_jgue7")
+texture = ExtResource("7_vfduq")
 move_y = 8.0
 move_time = 2.2
 
 [node name="SparkleGroup" type="Node2D" parent="Deco"]
 position = Vector2(88, 325)
 
-[node name="SparkleDeco" parent="Deco/SparkleGroup" instance=ExtResource("8_37yde")]
+[node name="SparkleDeco" parent="Deco/SparkleGroup" instance=ExtResource("8_bmiji")]
 position = Vector2(-8, 16.4)
 move_y = 3.0
 
-[node name="SparkleDeco2" parent="Deco/SparkleGroup" instance=ExtResource("8_37yde")]
+[node name="SparkleDeco2" parent="Deco/SparkleGroup" instance=ExtResource("8_bmiji")]
 position = Vector2(24, 8.39999)
 scale = Vector2(0.5, 0.5)
 move_y = 2.0
 move_time = 1.2
 
-[node name="SparkleDeco3" parent="Deco/SparkleGroup" instance=ExtResource("8_37yde")]
+[node name="SparkleDeco3" parent="Deco/SparkleGroup" instance=ExtResource("8_bmiji")]
 position = Vector2(8, -15.6)
 scale = Vector2(0.35, 0.35)
 move_y = 3.0
@@ -93,18 +93,18 @@ move_time = 1.5
 [node name="SparkleGroup2" type="Node2D" parent="Deco"]
 position = Vector2(815, 380)
 
-[node name="SparkleDeco" parent="Deco/SparkleGroup2" instance=ExtResource("8_37yde")]
+[node name="SparkleDeco" parent="Deco/SparkleGroup2" instance=ExtResource("8_bmiji")]
 position = Vector2(-8, 16.4)
 scale = Vector2(0.7, 0.7)
 move_y = 3.0
 
-[node name="SparkleDeco2" parent="Deco/SparkleGroup2" instance=ExtResource("8_37yde")]
+[node name="SparkleDeco2" parent="Deco/SparkleGroup2" instance=ExtResource("8_bmiji")]
 position = Vector2(16, 7.99997)
 scale = Vector2(0.5, 0.5)
 move_y = 2.0
 move_time = 1.2
 
-[node name="SparkleDeco3" parent="Deco/SparkleGroup2" instance=ExtResource("8_37yde")]
+[node name="SparkleDeco3" parent="Deco/SparkleGroup2" instance=ExtResource("8_bmiji")]
 position = Vector2(8, 32)
 scale = Vector2(0.35, 0.35)
 move_y = 3.0

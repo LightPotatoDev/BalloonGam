@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://0agt61k3unio"]
+
+[ext_resource type="PackedScene" uid="uid://jkh2tiwxj417" path="res://scenes/levels/Level3-7.tscn" id="1_bglta"]
+[ext_resource type="Script" path="res://resources/leveldatas/LevelData.gd" id="2_bpg04"]
+
+[resource]
+script = ExtResource("2_bpg04")
+lv_title = "Snake Pass"
+lv_scene = ExtResource("1_bglta")

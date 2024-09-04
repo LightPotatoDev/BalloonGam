@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2lxmwbgsphcx"]
+[gd_scene load_steps=13 format=3 uid="uid://2lxmwbgsphcx"]
 
 [ext_resource type="Script" path="res://scenes/system/GameManager.gd" id="1_x0ony"]
 [ext_resource type="Resource" uid="uid://bw5v44mo7mgol" path="res://resources/leveldatas/lvGD.tres" id="2_gk51o"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c68x2lam2lewr" path="res://resources/sounds/undo.wav" id="7_ldpwm"]
 [ext_resource type="AudioStream" uid="uid://bwhj32uf8maxc" path="res://resources/sounds/lvup_kokuti.wav" id="8_otltl"]
 [ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="9_fpgjc"]
+[ext_resource type="PackedScene" uid="uid://p38cn72r7q1m" path="res://scenes/ui/SceneChangeButton.tscn" id="10_irx6y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5ebs"]
 font = ExtResource("3_aail4")
@@ -86,13 +87,22 @@ label_settings = ExtResource("5_njgu5")
 [node name="UndoSound" type="AudioStreamPlayer" parent="GameManager"]
 stream = ExtResource("7_ldpwm")
 volume_db = -3.0
+bus = &"Sfx"
 
 [node name="LevelClearSound" type="AudioStreamPlayer" parent="GameManager"]
 stream = ExtResource("8_otltl")
 volume_db = -10.0
+bus = &"Sfx"
 
 [node name="Timer" type="Timer" parent="GameManager"]
 wait_time = 0.1
 one_shot = true
 
 [node name="BG" parent="." instance=ExtResource("9_fpgjc")]
+
+[node name="BackButton" parent="." instance=ExtResource("10_irx6y")]
+offset_left = 1000.0
+offset_top = 24.0
+offset_right = 1128.0
+offset_bottom = 72.0
+scene_to = "LevelSelect"

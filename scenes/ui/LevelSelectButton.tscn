@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5rrx10t710s2"]
+[gd_scene load_steps=6 format=3 uid="uid://b5rrx10t710s2"]
 
 [ext_resource type="PackedScene" uid="uid://p38cn72r7q1m" path="res://scenes/ui/SceneChangeButton.tscn" id="1_lpfdw"]
 [ext_resource type="Texture2D" uid="uid://cujacgktbf4lw" path="res://resources/sprites/ui/button_frame.png" id="2_kfn3q"]
 [ext_resource type="LabelSettings" uid="uid://c5kwyjl0utcq5" path="res://resources/level_num_label.tres" id="3_lu8on"]
 [ext_resource type="Script" path="res://scenes/ui/LevelSelectButton.gd" id="3_sjrvq"]
+[ext_resource type="Texture2D" uid="uid://culf8v7adle77" path="res://resources/sprites/objects/yes_tile_ui.png" id="5_nfw3k"]
 
 [node name="LevelSelectButton" instance=ExtResource("1_lpfdw")]
 offset_right = 593.0
@@ -25,3 +26,8 @@ text = "1"
 label_settings = ExtResource("3_lu8on")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Completed" type="Sprite2D" parent="." index="2"]
+position = Vector2(32, 32)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_nfw3k")

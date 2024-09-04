@@ -4,7 +4,7 @@
 shader_type canvas_item;
 
 uniform float borderScale = 2.0;
-uniform vec2 offset = vec2(-10.0, -10.0);
+uniform vec2 offset = vec2(-4.0, -4.0);
 uniform vec4 color : source_color;
 // turn this on to see where the shadow will be clipped
 uniform bool debug = false;

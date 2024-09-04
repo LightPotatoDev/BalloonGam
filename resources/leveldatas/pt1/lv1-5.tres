@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://dcsq8hnwdnba7"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://bmdhth3o06og3"]
 
-[ext_resource type="PackedScene" uid="uid://ddr2q1y0wvige" path="res://scenes/levels/Level5.tscn" id="1_x7kjl"]
-[ext_resource type="Script" path="res://resources/leveldatas/LevelData.gd" id="2_b7okx"]
+[ext_resource type="PackedScene" uid="uid://ddr2q1y0wvige" path="res://scenes/levels/Level1-5.tscn" id="1_1k11d"]
+[ext_resource type="Script" path="res://resources/leveldatas/LevelData.gd" id="2_sgfep"]
 
 [resource]
-script = ExtResource("2_b7okx")
-lv_number = 5
-lv_title = "Suspicious Level"
-lv_scene = ExtResource("1_x7kjl")
+script = ExtResource("2_sgfep")
+lv_title = "Face Shield"
+lv_scene = ExtResource("1_1k11d")

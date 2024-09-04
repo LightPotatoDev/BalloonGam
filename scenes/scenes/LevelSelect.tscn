@@ -1,27 +1,220 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfj80nu08wtm0"]
+[gd_scene load_steps=13 format=3 uid="uid://bfj80nu08wtm0"]
 
+[ext_resource type="PackedScene" uid="uid://b5rrx10t710s2" path="res://scenes/ui/LevelSelectButton.tscn" id="1_ga0kn"]
 [ext_resource type="PackedScene" uid="uid://p38cn72r7q1m" path="res://scenes/ui/SceneChangeButton.tscn" id="1_s6i36"]
-[ext_resource type="Texture2D" uid="uid://cujacgktbf4lw" path="res://resources/sprites/ui/button_frame.png" id="2_2euig"]
+[ext_resource type="FontFile" uid="uid://boi1da7s5xidb" path="res://resources/HelvetiHand.ttf" id="2_k7fqm"]
+[ext_resource type="Script" path="res://scenes/ui/VolumeSlider.gd" id="4_4mj6n"]
+[ext_resource type="Shader" path="res://resources/shaders/drop_shadow.gdshader" id="4_770xg"]
+[ext_resource type="Texture2D" uid="uid://d0r2r8pw2v0gj" path="res://resources/sprites/ui/music_icon.png" id="5_0rj7y"]
+[ext_resource type="Script" path="res://scenes/decorations/RotationTween.gd" id="6_nfn04"]
+[ext_resource type="Texture2D" uid="uid://dhs5g23jtlelk" path="res://resources/sprites/ui/sfx_icon.png" id="7_303hd"]
 [ext_resource type="PackedScene" uid="uid://r6j1n35055hn" path="res://scenes/BG.tscn" id="7_u1jw0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2x8n"]
+font = ExtResource("2_k7fqm")
+font_size = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ie40w"]
+shader = ExtResource("4_770xg")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-4, -4)
+shader_parameter/color = Color(0, 0, 0, 0.466667)
+shader_parameter/debug = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ro3p5"]
+shader = ExtResource("4_770xg")
+shader_parameter/borderScale = 2.0
+shader_parameter/offset = Vector2(-4, -4)
+shader_parameter/color = Color(0, 0, 0, 0.490196)
+shader_parameter/debug = false
 
 [node name="Title" type="Node2D"]
 
 [node name="LevelButtons" type="Node2D" parent="."]
 
-[node name="Lv1-1" parent="LevelButtons" instance=ExtResource("1_s6i36")]
-offset_left = 528.0
-offset_top = 256.0
-offset_right = 656.0
-offset_bottom = 320.0
-pivot_offset = Vector2(32, 32)
-texture_normal = ExtResource("2_2euig")
-scene_to = "Main"
+[node name="Part1" type="Node2D" parent="LevelButtons"]
 
-[node name="Label" type="Label" parent="LevelButtons/Lv1-1"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Label" type="Label" parent="LevelButtons/Part1"]
+offset_left = 296.0
+offset_top = 72.0
+offset_right = 382.0
+offset_bottom = 113.0
+text = "Part 1"
+label_settings = SubResource("LabelSettings_l2x8n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelButtons/Part1"]
+offset_left = 136.0
+offset_top = 120.0
+offset_right = 540.0
+offset_bottom = 184.0
+
+[node name="1-1" parent="LevelButtons/Part1/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 1
+sub_lv = 1
+
+[node name="1-2" parent="LevelButtons/Part1/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 1
+sub_lv = 2
+
+[node name="1-3" parent="LevelButtons/Part1/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 1
+sub_lv = 3
+
+[node name="1-4" parent="LevelButtons/Part1/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 1
+sub_lv = 4
+
+[node name="1-5" parent="LevelButtons/Part1/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 1
+sub_lv = 5
+
+[node name="1-6" parent="LevelButtons/Part1/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 1
+sub_lv = 6
+
+[node name="Part2" type="Node2D" parent="LevelButtons"]
+position = Vector2(0, 136)
+
+[node name="Label" type="Label" parent="LevelButtons/Part2"]
+offset_left = 848.0
+offset_top = -56.0
+offset_right = 939.0
+offset_bottom = -15.0
+text = "Part 2"
+label_settings = SubResource("LabelSettings_l2x8n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelButtons/Part2"]
+offset_left = 720.0
+offset_top = -8.0
+offset_right = 1056.0
+offset_bottom = 56.0
+
+[node name="2-1" parent="LevelButtons/Part2/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 2
+sub_lv = 1
+
+[node name="2-2" parent="LevelButtons/Part2/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 2
+sub_lv = 2
+
+[node name="2-3" parent="LevelButtons/Part2/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 2
+sub_lv = 3
+
+[node name="2-4" parent="LevelButtons/Part2/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 2
+sub_lv = 4
+
+[node name="2-5" parent="LevelButtons/Part2/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 2
+sub_lv = 5
+
+[node name="Part3" type="Node2D" parent="LevelButtons"]
+position = Vector2(0, 272)
+
+[node name="Label" type="Label" parent="LevelButtons/Part3"]
+offset_left = 552.0
+offset_top = -56.0
+offset_right = 642.0
+offset_bottom = -15.0
+text = "Part 3"
+label_settings = SubResource("LabelSettings_l2x8n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelButtons/Part3"]
+offset_left = 360.0
+offset_right = 832.0
+offset_bottom = 64.0
+
+[node name="3-1" parent="LevelButtons/Part3/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 3
+sub_lv = 1
+
+[node name="3-2" parent="LevelButtons/Part3/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 3
+sub_lv = 2
+
+[node name="3-3" parent="LevelButtons/Part3/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 3
+sub_lv = 3
+
+[node name="3-4" parent="LevelButtons/Part3/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 3
+sub_lv = 4
+
+[node name="3-5" parent="LevelButtons/Part3/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 3
+sub_lv = 5
+
+[node name="3-6" parent="LevelButtons/Part3/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 3
+sub_lv = 6
+
+[node name="3-7" parent="LevelButtons/Part3/HBoxContainer" instance=ExtResource("1_ga0kn")]
+layout_mode = 2
+lv = 3
+sub_lv = 7
 
 [node name="BackButton" parent="." instance=ExtResource("1_s6i36")]
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MusicIcon" type="Sprite2D" parent="Node2D"]
+material = SubResource("ShaderMaterial_ie40w")
+position = Vector2(480, 424)
+texture = ExtResource("5_0rj7y")
+script = ExtResource("6_nfn04")
+randomize_params = true
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Node2D"]
+offset_left = 512.0
+offset_top = 400.0
+offset_right = 704.0
+offset_bottom = 448.0
+min_value = -30.0
+max_value = 0.0
+script = ExtResource("4_4mj6n")
+
+[node name="SfxIcon" type="Sprite2D" parent="Node2D"]
+material = SubResource("ShaderMaterial_ro3p5")
+position = Vector2(480, 464)
+texture = ExtResource("7_303hd")
+script = ExtResource("6_nfn04")
+randomize_params = true
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Node2D"]
+offset_left = 512.0
+offset_top = 440.0
+offset_right = 704.0
+offset_bottom = 488.0
+min_value = -30.0
+max_value = 0.0
+script = ExtResource("4_4mj6n")
+my_bus = 1
+
 [node name="BG" parent="." instance=ExtResource("7_u1jw0")]
+
+[connection signal="value_changed" from="Node2D/MusicVolumeSlider" to="Node2D/MusicVolumeSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Node2D/SFXVolumeSlider" to="Node2D/SFXVolumeSlider" method="_on_value_changed"]
